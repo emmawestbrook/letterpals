@@ -22,6 +22,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import PalList from '../PalList/PalList';
 import MyLetters from '../MyLetters/MyLetters';
 import MyProfile from '../MyProfile/MyProfile';
+import EditMyProfile from '../EditMyProfile/EditMyProfile';
+import PalProfile from '../PalProfile/PalProfile';
 import PalSearch from '../PalSearch/PalSearch';
 
 import './App.css';
@@ -86,6 +88,20 @@ class App extends Component {
               exact
               path="/myprofile"
               component={MyProfile}
+            />
+
+            <ProtectedRoute
+              // logged in shows PalList else shows LoginPage
+              exact
+              path="/editprofile"
+              component={EditMyProfile}
+            />
+
+            <ProtectedRoute
+              // logged in shows PalList else shows LoginPage
+              exact
+              path="/palprofile"
+              component={PalProfile}
             />
 
             <ProtectedRoute
