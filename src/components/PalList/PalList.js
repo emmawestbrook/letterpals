@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import PalTableItem from '../PalTableItem/PalTableItem';
+import PalSort from '../PalSort/PalSort';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -42,8 +43,8 @@ class PalList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.store.pals.map((friendship, i) => {
-                            return (<PalTableItem key={i} friendship={friendship} />);
+                        {this.props.store.pals.map((rawPal) => {
+                            return (<PalSort rawPal={rawPal} userId={this.props.store.user.id} />);
                         })}
                     </tbody>
                 </table>

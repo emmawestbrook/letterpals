@@ -18,8 +18,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT "pal"."id" AS "friendship_id",
     "pal1"."id" AS "pal1_id",
     "pal2"."id"AS "pal2_id",
-    "pal1"."name" AS "pal1_username",
-    "pal2"."name" AS "pal2_username"
+    "pal1"."name" AS "pal1_name",
+    "pal2"."name" AS "pal2_name"
 
     FROM "pal" AS "pal"
         JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
