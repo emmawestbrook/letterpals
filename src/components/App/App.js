@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PalList from '../PalList/PalList';
 import MyLetters from '../MyLetters/MyLetters';
+import PalSearch from '../PalSearch/PalSearch';
 
 import './App.css';
 
@@ -76,6 +77,13 @@ class App extends Component {
               exact
               path="/myletters"
               component={MyLetters}
+            />
+
+            <ProtectedRoute
+              // logged in shows PalList else shows LoginPage
+              exact
+              path="/palsearch"
+              component={PalSearch}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
