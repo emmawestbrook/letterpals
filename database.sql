@@ -30,11 +30,16 @@ CREATE TABLE "letter"
 -- DROP TABLE "letters";
 
 --creating pal table
+CREATE TYPE "pal_status" AS ENUM
+('PENDING', 'ACCEPTED', 'REJECTED');
+
 CREATE TABLE "pal"
 (
     "id" SERIAL PRIMARY KEY,
     "pal1_id" INT REFERENCES "user",
-    "pal2_id" INT REFERENCES "user"
+    "pal2_id" INT REFERENCES "user",
+    "status" "pal_status"
+
 );
 -- DROP TABLE "pals";
 

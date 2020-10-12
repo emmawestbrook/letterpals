@@ -9,6 +9,8 @@ const AboutPage = () => (
   <div className="container">
     <div>
       <p>Letterpals is a web app designed to help users keep track of their postal correspondance.</p>
+      {/* <img src="../../../public/images/logo.png" width="200" /> */}
+
     </div>
   </div>
 );
