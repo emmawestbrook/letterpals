@@ -13,9 +13,9 @@ class PalTableItem extends Component {
 
     render() {
         return (
-            <div>
-                <h2>{this.state.heading}</h2>
-            </div>
+            <tr>
+                <td>{JSON.stringify(this.props.friendship)}</td>
+            </tr>
         );
     }
 }

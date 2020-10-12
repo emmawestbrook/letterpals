@@ -8,11 +8,12 @@ function* getPals(action) {
         url: '/api/pals'
     });
     console.log(response.data);
+
     //take the info acquired from the database and set it as redux state
-    // yield put({
-    //     type: 'SET_PALS',
-    //     payload: response.data
-    // })
+    yield put({
+        type: 'SET_PALS',
+        payload: response.data
+    });
 }
 
 function* palsSaga() {

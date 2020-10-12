@@ -1,9 +1,7 @@
 const palsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_USER':
+        case 'SET_PALS':
             return action.payload;
-        case 'UNSET_USER':
-            return {};
         default:
             return state;
     }

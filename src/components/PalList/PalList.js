@@ -17,10 +17,22 @@ class PalList extends Component {
         this.props.dispatch(action);
     };
 
+
+
     render() {
+        // let userPals = [];
+        // for (let i = 0; i < this.props.store.pals; i++) {
+        //     if (this.props.store.pals[i].pal1_id = this.props.store.user.id) {
+        //         console.log('found one!', this.props.store.pals[i]);
+        //     }
+        // }
+
+
+
         return (
             <div>
                 <h2>{this.state.heading}</h2>
+                {JSON.stringify(this.props.store.pals)}
                 <table>
                     <thead>
                         <tr>
@@ -30,8 +42,9 @@ class PalList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* map => <tr> <PalTableItem/> </tr> */}
-
+                        {this.props.store.pals.map((friendship, i) => {
+                            return (<PalTableItem key={i} friendship={friendship} />);
+                        })}
                     </tbody>
                 </table>
             </div>
