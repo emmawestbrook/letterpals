@@ -38,7 +38,7 @@ CREATE TABLE "pal"
     "id" SERIAL PRIMARY KEY,
     "pal1_id" INT REFERENCES "user",
     "pal2_id" INT REFERENCES "user",
-    "status" "pal_status"
+    "status" "pal_status" DEFAULT 'PENDING'
 
 );
 -- DROP TABLE "pals";
