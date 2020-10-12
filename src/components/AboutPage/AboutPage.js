@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './logo-small.png';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -9,7 +10,7 @@ const AboutPage = () => (
   <div className="container">
     <div>
       <p>Letterpals is a web app designed to help users keep track of their postal correspondance.</p>
-      {/* <img src="../../../public/images/logo.png" width="200" /> */}
+      <img src={logo} width="200" />
 
     </div>
   </div>
