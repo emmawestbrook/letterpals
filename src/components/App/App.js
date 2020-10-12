@@ -21,9 +21,11 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import PalList from '../PalList/PalList';
 import MyLetters from '../MyLetters/MyLetters';
+import MyProfile from '../MyProfile/MyProfile';
 import PalSearch from '../PalSearch/PalSearch';
 
 import './App.css';
+
 
 class App extends Component {
   componentDidMount() {
@@ -77,6 +79,13 @@ class App extends Component {
               exact
               path="/myletters"
               component={MyLetters}
+            />
+
+            <ProtectedRoute
+              // logged in shows PalList else shows LoginPage
+              exact
+              path="/myprofile"
+              component={MyProfile}
             />
 
             <ProtectedRoute
