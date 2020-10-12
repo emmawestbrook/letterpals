@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import PalList from '../PalList/PalList';
 
 import './App.css';
 
@@ -60,6 +61,13 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+
+            <ProtectedRoute
+              // logged in shows PalList else shows LoginPage
+              exact
+              path="/pallist"
+              component={PalList}
             />
 
             {/* When a value is supplied for the authRedirect prop the user will
