@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+/*This page successfully takes in the full name as well as username and password upon registration.*/
+
 class RegisterForm extends Component {
   state = {
     username: '',
     password: '',
+    name: ''
   };
 
   registerUser = (event) => {
     event.preventDefault();
-
+    //console.log('state is', this.state);
     this.props.dispatch({
       type: 'REGISTER',
       payload: {
         username: this.state.username,
         password: this.state.password,
+        name: this.state.name
       },
     });
   }; // end registerUser
@@ -58,6 +62,18 @@ class RegisterForm extends Component {
               onChange={this.handleInputChangeFor('password')}
             />
           </label>
+          <div>
+            <label htmlFor="name">
+              Full Name:
+            <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                required
+                onChange={this.handleInputChangeFor('name')}
+              />
+            </label>
+          </div>
         </div>
         <div>
           <input className="btn" type="submit" name="submit" value="Register" />
