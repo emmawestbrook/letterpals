@@ -9,9 +9,16 @@ import './PalProfile.css';
 // the component name TemplateClass with the name for the new
 // component.
 class PalProfile extends Component {
-    // state = {
-    //     pal: ,
-    // };
+
+
+    handleDelete = () => {
+        console.log(this.props.store.palprofile.id);
+        this.props.dispatch({
+            type: 'DELETE_PAL',
+            payload: this.props.store.palprofile.id
+        });
+        //this.props.history.push(`/palprofile`);
+    }
 
     render() {
         return (
@@ -20,6 +27,7 @@ class PalProfile extends Component {
                 <h2 className="username">@{this.props.store.palprofile.username}</h2>
                 <p>{this.props.store.palprofile.about}</p>
                 <p>{this.props.store.palprofile.address}</p>
+                <button className="btn" onClick={this.handleDelete}>remove from pals</button>
 
             </div>
         );
