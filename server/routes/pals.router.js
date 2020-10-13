@@ -36,6 +36,22 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+// get selected pal's details from the database
+router.get('/:id', (req, res) => {
+    console.log('in pal router. getting pal:', req.params.id);
+    let palId = req.params.id
+    const queryText = `SELECT "id", "username", "name", "about", "address" FROM "user"
+    WHERE "user"."id" = $1;`;
+    pool.query(queryText, [palId])
+        .then((results) => {
+            res.send(results.rows);
+        })
+        // catch for query
+        .catch((error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
 
 
 

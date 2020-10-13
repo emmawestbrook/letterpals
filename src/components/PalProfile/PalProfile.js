@@ -14,7 +14,8 @@ class PalProfile extends Component {
     render() {
         return (
             <div>
-                <h2>{this.state.heading}</h2>
+                <h2>{this.props.store.palprofile.name}</h2>
+                {JSON.stringify(this.props.store.palprofile)}
             </div>
         );
     }
