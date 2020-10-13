@@ -11,6 +11,7 @@ import PalSort from '../PalSort/PalSort';
 class PalList extends Component {
     state = {
         heading: 'Pal List',
+        palList: []
     };
 
     componentDidMount() {
@@ -21,15 +22,7 @@ class PalList extends Component {
 
 
     render() {
-        // let userPals = [];
-        // for (let i = 0; i < this.props.store.pals; i++) {
-        //     if (this.props.store.pals[i].pal1_id = this.props.store.user.id) {
-        //         console.log('found one!', this.props.store.pals[i]);
-        //     }
-        // }
-
-
-
+      
         return (
             <div>
                 <h2>{this.state.heading}</h2>
@@ -43,8 +36,8 @@ class PalList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.store.pals.map((rawPal) => {
-                            return (<PalSort rawPal={rawPal} userId={this.props.store.user.id} />);
+                        {this.props.store.pals.map((pal) => {
+                            return (<PalTableItem pal={pal} userId={this.props.store.user.id} />);
                         })}
                     </tbody>
                 </table>

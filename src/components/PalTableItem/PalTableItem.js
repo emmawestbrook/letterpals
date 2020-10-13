@@ -14,7 +14,13 @@ class PalTableItem extends Component {
     render() {
         return (
             <tr>
-                <td>{JSON.stringify(this.props.friendship)}</td>
+                <td>image </td>
+                <td> 
+                {this.props.userId === this.props.pal.pal1_id ?
+                        this.props.pal.pal2_name :
+                        this.props.pal.pal1_name
+                }</td>
+                <td><button>details</button> </td>
             </tr>
         );
     }
