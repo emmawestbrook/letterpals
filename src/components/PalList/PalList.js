@@ -22,11 +22,11 @@ class PalList extends Component {
 
 
     render() {
-      
+
         return (
             <div>
                 <h2>{this.state.heading}</h2>
-                {JSON.stringify(this.props.store.pals)}
+                {/* {JSON.stringify(this.props.store.pals)} */}
                 <table>
                     <thead>
                         <tr>

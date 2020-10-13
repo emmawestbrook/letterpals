@@ -10,10 +10,10 @@ import { withRouter } from 'react-router-dom';
 // component.
 class PalTableItem extends Component {
     state = {
-        pal_id: 
-        this.props.userId === this.props.pal.pal1_id ?
-        this.props.pal.pal2_id :
-        this.props.pal.pal1_id
+        pal_id:
+            this.props.userId === this.props.pal.pal1_id ?
+                this.props.pal.pal2_id :
+                this.props.pal.pal1_id
     };
 
     componentDidMount() {
@@ -22,7 +22,7 @@ class PalTableItem extends Component {
 
     handleClick = () => {
         this.props.dispatch({
-            type: 'FETCH_PAL', 
+            type: 'FETCH_PAL',
             payload: this.state.pal_id
         });
         this.props.history.push(`/palprofile`);
@@ -30,13 +30,13 @@ class PalTableItem extends Component {
 
     render() {
         return (
-            <tr>
+            <tr key={this.props.pal.id}>
                 <td>image </td>
-                <td> 
-                {this.props.userId === this.props.pal.pal1_id ?
+                <td>
+                    {this.props.userId === this.props.pal.pal1_id ?
                         this.props.pal.pal2_name :
                         this.props.pal.pal1_name
-                }</td>
+                    }</td>
                 <td><button onClick={this.handleClick}>details</button> </td>
             </tr>
         );

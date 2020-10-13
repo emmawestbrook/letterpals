@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
     WHERE "user"."id" = $1;`;
     pool.query(queryText, [palId])
         .then((results) => {
-            res.send(results.rows);
+            res.send(results.rows[0]);
         })
         // catch for query
         .catch((error) => {
