@@ -37,7 +37,7 @@ class PalTableItem extends Component {
                         this.props.pal.pal2_name :
                         this.props.pal.pal1_name
                     }</td>
-                <td><button onClick={this.handleClick}>details</button> </td>
+                <td><button className="btn" onClick={this.handleClick}>details</button> </td>
             </tr>
         );
     }

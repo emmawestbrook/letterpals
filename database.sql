@@ -56,3 +56,6 @@ FROM "pal" AS "pal"
     JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
     JOIN "user" "pal2" ON "pal2"."id"="pal"."pal2_id"
 WHERE "pal1_id"=1 OR "pal2_id"=1;
+
+--pal delete:
+DELETE FROM "pal" WHERE ("pal1_id"=$1 AND "pal2_id"=$2) OR ("pal2_id"=$1 AND "pal1_id"=$2);
