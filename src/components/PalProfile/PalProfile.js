@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import Swal from 'sweetalert2';
 
 import './PalProfile.css';
 
@@ -13,11 +14,25 @@ class PalProfile extends Component {
 
     handleDelete = () => {
         console.log(this.props.store.palprofile.id);
-        this.props.dispatch({
-            type: 'DELETE_PAL',
-            payload: this.props.store.palprofile.id
+        Swal.fire({
+            title: 'are you sure?',
+            text: "this pal won't be able to see your profile anymore!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#9dac68',
+            cancelButtonColor: '#e26d5c',
+            confirmButtonText: 'yes, remove pal!'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                this.props.dispatch({
+                    type: 'DELETE_PAL',
+                    payload: this.props.store.palprofile.id
+                });
+                Swal.fire('pal removed!', '', 'success');
+                this.props.history.push(`/pallist`);
+            }
         });
-        //this.props.history.push(`/palprofile`);
     }
 
     render() {
