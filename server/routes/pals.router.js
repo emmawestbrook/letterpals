@@ -53,6 +53,23 @@ router.get('/:id', (req, res) => {
         });
 });
 
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in pal router. deleting pal:', req.params.id);
+    console.log('req.user.id:', req.user.id);
+    let userId = req.user.id;
+    let palId = req.params.id;
+    const queryText = `DELETE FROM "pal" WHERE ("pal1_id"=$1 AND "pal2_id"=$2) OR ("pal2_id"=$1 AND "pal1_id"=$2);`;
+    pool.query(queryText, [palId, userId])
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        // catch for query
+        .catch((error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
 
 
 module.exports = router;
