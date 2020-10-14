@@ -10,7 +10,7 @@ const AboutPage = () => (
   <div className="container">
     <div>
       <p>Letterpals is a web app designed to help users keep track of their postal correspondance.</p>
-      <img src={logo} width="200" />
+      <img src={logo} width="200" alt="letterpals logo" />
 
     </div>
   </div>

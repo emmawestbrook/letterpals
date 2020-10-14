@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './UserPage.css';
 
 class UserPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
   render() {
     return (
-      <div>
+      <div className="userdiv">
         <h1 id="welcome">Welcome, {this.props.store.user.name}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
-        <LogOutButton className="log-in" />
+        <LogOutButton className="log-in btn" />
       </div>
     );
   }
