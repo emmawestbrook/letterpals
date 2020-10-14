@@ -24,8 +24,19 @@ function* fetchUser() {
   }
 }
 
+function* editUser(action) {
+  try {
+    const response = yield axios.put('/api/user', action.payload);
+    yield put({ type: 'FETCH_USER' });
+  } catch (error) {
+    console.log('User get request failed', error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('EDIT_USER', editUser);
+
 }
 
 export default userSaga;
