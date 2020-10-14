@@ -38,11 +38,18 @@ class PalProfile extends Component {
     render() {
         return (
             <div>
-                <h1>{this.props.store.palprofile.name}</h1>
-                <h2 className="username">@{this.props.store.palprofile.username}</h2>
-                <p>{this.props.store.palprofile.about}</p>
-                <p>{this.props.store.palprofile.address}</p>
-                <button className="btn" onClick={this.handleDelete}>remove from pals</button>
+
+                <div>
+                    <h1>{this.props.store.palprofile.name}</h1>
+                    <h2 className="username">@{this.props.store.palprofile.username}</h2>
+                    <img src={this.props.store.palprofile.avatar} width="200" alt="profile image" />
+                    <p>{this.props.store.palprofile.about}</p>
+                    <p>{this.props.store.palprofile.address}</p>
+                    <button className="btn" onClick={this.handleDelete}>remove from pals</button>
+                </div>
+                <div>
+
+                </div>
 
             </div>
         );

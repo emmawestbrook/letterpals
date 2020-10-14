@@ -40,7 +40,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/:id', (req, res) => {
     console.log('in pal router. getting pal:', req.params.id);
     let palId = req.params.id
-    const queryText = `SELECT "id", "username", "name", "about", "address" FROM "user"
+    const queryText = `SELECT "id", "username", "name", "avatar", "about", "address" FROM "user"
     WHERE "user"."id" = $1;`;
     pool.query(queryText, [palId])
         .then((results) => {
