@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withRouter } from 'react-router-dom';
 
+import Table from 'react-bootstrap/Table';
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -30,15 +32,15 @@ class PalTableItem extends Component {
 
     render() {
         return (
-            <tr key={this.props.pal.id}>
-                <td>image </td>
-                <td>
+            <div className="plrow" key={this.props.pal.id}>
+                <div >image </div>
+                <div >
                     {this.props.userId === this.props.pal.pal1_id ?
                         this.props.pal.pal2_name :
                         this.props.pal.pal1_name
-                    }</td>
-                <td><button className="btn" onClick={this.handleClick}>details</button> </td>
-            </tr>
+                    }</div>
+                <div ><button className="btn" onClick={this.handleClick}>details</button> </div>
+            </div>
         );
     }
 }
