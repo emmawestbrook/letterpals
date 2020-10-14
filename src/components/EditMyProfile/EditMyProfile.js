@@ -21,30 +21,55 @@ class EditMyProfile extends Component {
             [propertyName]: event.target.value
         })
         console.log('state is:', this.state);
+    }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.dispatch({
+            type: 'EDIT_USER',
+            payload: this.state
+        });
+        this.props.history.push(`/myprofile`);
     }
     render() {
         return (
-            <div>
-                <label htmlFor="name">
-                    Name:
+
+            <form className="formPanel" onSubmit={this.handleSubmit}>
+                <h2>edit my profile</h2>
+                <div>
+                    <label htmlFor="name">
+                        Name:
                     <input name="name" type="text" placeholder={this.props.store.user.name} onChange={(event) => this.handleChange(event, 'name')} />
-                </label>
-                <label htmlFor="about">
-                    About:
-                    <input name="about" type="text" placeholder={this.props.store.user.about} onChange={(event) => this.handleChange(event, 'about')} />
-                </label>
-                <label htmlFor="address">
-                    Address:
-                    <input name="address" type="text" placeholder={this.props.store.user.address} onChange={(event) => this.handleChange(event, 'address')} />
-                </label>
-                <label htmlFor="avatar">
-                    Avatar URL:
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="about">
+                        About:
+                    <textarea name="about" type="text" rows="8" cols="42"
+                            placeholder={this.props.store.user.about}
+                            onChange={(event) => this.handleChange(event, 'about')} />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="address">
+                        Address:
+                    <textarea name="about" type="text" rows="3" cols="42"
+                            name="address" type="text"
+                            placeholder={this.props.store.user.address}
+                            onChange={(event) => this.handleChange(event, 'address')} />
+                    </label>
+                </div>
+                <div>
+                    <label htmlFor="avatar">
+                        Avatar URL:
                     <input name="avatar" type="text" placeholder={this.props.store.user.avatar} onChange={(event) => this.handleChange(event, 'avatar')} />
-                </label>
+                    </label>
+                </div>
+
+                <input className="btn" type="submit" name="submit" value="Save changes" />
 
 
-            </div>
+            </form>
         );
     }
 }

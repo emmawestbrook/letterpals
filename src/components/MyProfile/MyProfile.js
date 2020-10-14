@@ -17,10 +17,7 @@ class MyProfile extends Component {
     };
 
     handleClick = () => {
-        this.props.dispatch({
-            type: 'EDIT_USER',
-            payload: this.props.store.user.id
-        });
+
         this.props.history.push(`/editprofile`);
     }
 
