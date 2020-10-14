@@ -1,6 +1,9 @@
 
 
 
+.tbody .tr:hover {
+    background: #9dac68;
+}
 h1{
     font-size: 30px;
     color: #9dac68;
@@ -9,35 +12,15 @@ h1{
     margin-bottom: 15px;
 }
 
-.pallist{
+.table{
     width:70%;
     table-layout: auto;
     margin: auto;
 }
 
-.plheader{
-    display: flex;
-    justify-content: space-between;
+.tbl-header{
     background-color: #9dac68;
-    padding: 20px;
-    text-align: left;
-    font-weight: 500;
-    font-size: 16px;
-    color: #fff;
-    text-transform: uppercase;
-    
 }
-.plrow{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: solid 1px #9dac68;
-    padding: 15px;
-}
-
-.plrow:hover{
-    background: #e1ebda;
-}
-
 
 .tbl-content{
     height:300px;
@@ -46,7 +29,14 @@ h1{
     border: 1px solid #9dac68;
 }
 
-
+.th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+}
 
 .td{
     padding: 15px;
