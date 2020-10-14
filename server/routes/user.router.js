@@ -15,16 +15,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', rejectUnauthenticated, (req, res) => {
-  console.log(req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id);
-
+  //console.log(req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id);
+  //COALESCE in the query checks to see if the value is null, and if so, it keeps the field the same.
+  //This way the database is only updated when a user actually changes an input, and if they don't
+  //edit it, it stays the same.
   const queryText = `UPDATE "user" 
   SET "name" = COALESCE( $1 , "name"),
     "avatar" = COALESCE( $2 , "avatar"),
     "about" = COALESCE( $3 , "about"),
     "address" = COALESCE( $4 , "address")
-  
   WHERE "id"=$5;`;
-
 
   pool.query(queryText, [req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id])
     .then((result) => {

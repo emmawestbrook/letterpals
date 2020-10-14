@@ -7,6 +7,8 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // the component name TemplateClass with the name for the new
 // component.
 class EditMyProfile extends Component {
+    //These state values have to start as null so that the database only updates when there have actually been changes made by the user.
+    //If no changes are made by the user, and the value gets to the database, then it will remain the same.
     state = {
         name: null,
         avatar: null,

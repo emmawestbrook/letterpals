@@ -46,13 +46,20 @@ CREATE TABLE "pal"
 
 --AXIOS QUERIES
 --creating pal list for main app view
-SELECT "pal"."id" AS "friendship_id",
-    "pal1"."id" AS "pal1_id",
-    "pal2"."id"AS "pal2_id",
-    "pal1"."name" AS "pal1_username",
-    "pal2"."name" AS "pal2_username"
+-- SELECT "pal"."id" AS "friendship_id",
+--     "pal1"."id" AS "pal1_id",
+--     "pal2"."id"AS "pal2_id",
+--     "pal1"."name" AS "pal1_username",
+--     "pal2"."name" AS "pal2_username"
 
-FROM "pal" AS "pal"
-    JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
-    JOIN "user" "pal2" ON "pal2"."id"="pal"."pal2_id"
-WHERE "pal1_id"=1 OR "pal2_id"=1;
+-- FROM "pal" AS "pal"
+--     JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
+--     JOIN "user" "pal2" ON "pal2"."id"="pal"."pal2_id"
+-- WHERE "pal1_id"=1 OR "pal2_id"=1;
+
+-- UPDATE "user" 
+--   SET "name" = COALESCE( $1 , "name"),
+--     "avatar" = COALESCE( $2 , "avatar"),
+--     "about" = COALESCE( $3 , "about"),
+--     "address" = COALESCE( $4 , "address")
+--   WHERE "id"=$5;
