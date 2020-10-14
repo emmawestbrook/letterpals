@@ -14,6 +14,29 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+router.put('/', rejectUnauthenticated, (req, res) => {
+  //console.log(req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id);
+  //COALESCE in the query checks to see if the value is null, and if so, it keeps the field the same.
+  //This way the database is only updated when a user actually changes an input, and if they don't
+  //edit it, it stays the same.
+  const queryText = `UPDATE "user" 
+  SET "name" = COALESCE( $1 , "name"),
+    "avatar" = COALESCE( $2 , "avatar"),
+    "about" = COALESCE( $3 , "about"),
+    "address" = COALESCE( $4 , "address")
+  WHERE "id"=$5;`;
+
+  pool.query(queryText, [req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id])
+    .then((result) => {
+      res.send(200);
+    })
+    // catch for query
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
+});
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
