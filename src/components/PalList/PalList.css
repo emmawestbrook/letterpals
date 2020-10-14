@@ -1,0 +1,50 @@
+
+
+
+tbody tr:hover {
+    background: #9dac68;
+}
+h1{
+    font-size: 30px;
+    color: #9dac68;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+table{
+    width:70%;
+    table-layout: auto;
+    margin: auto;
+}
+
+.tbl-header{
+    background-color: #9dac68;
+}
+
+.tbl-content{
+    height:300px;
+    /* overflow-x:auto; */
+    margin-top: 0px;
+    border: 1px solid #9dac68;
+}
+
+th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 16px;
+    color: black;
+    border-bottom: solid 1px #9dac68;
+}
+  

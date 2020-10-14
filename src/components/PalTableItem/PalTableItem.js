@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withRouter } from 'react-router-dom';
 
+import Table from 'react-bootstrap/Table';
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
