@@ -15,8 +15,26 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.put('/', rejectUnauthenticated, (req, res) => {
-  // Send back user object from the session (previously queried from the database)
-  console.log('in put');
+  console.log(req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id);
+
+  const queryText = `UPDATE "user" 
+  SET "name" = COALESCE( $1 , "name"),
+    "avatar" = COALESCE( $2 , "avatar"),
+    "about" = COALESCE( $3 , "about"),
+    "address" = COALESCE( $4 , "address")
+  
+  WHERE "id"=$5;`;
+
+
+  pool.query(queryText, [req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id])
+    .then((result) => {
+      res.send(200);
+    })
+    // catch for query
+    .catch((error) => {
+      console.log(`Error on query ${error}`);
+      res.sendStatus(500);
+    });
 });
 
 // Handles POST request with new user data

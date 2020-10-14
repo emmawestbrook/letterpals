@@ -8,10 +8,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class EditMyProfile extends Component {
     state = {
-        name: '',
-        about: '',
-        address: '',
-        avatar: ''
+        name: null,
+        avatar: null,
+        about: null,
+        address: null
     };
 
 
