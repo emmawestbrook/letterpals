@@ -42,23 +42,28 @@ class AddLetter extends Component {
             <div className="formPanel">
                 <h2>Add letter</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="to">
-                        To:
-                    <select name="to" onChange={(event) => this.handleChange(event, 'to_id')}>
-                            <option key={0} value={null}> </option>
-                            {this.props.pals.map((pal) =>
-                                pal.pal1_id === this.props.store.user.id ?
-                                    <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
-                                    <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
-                            )}
-                        </select>
-                    </label>
-                    <label htmlFor="postmark">
-                        Sent on:
-                    <input name="postmark" type="date"
-                            placeholder="postmark date"
-                            onChange={(event) => this.handleChange(event, 'postmark')} />
-                    </label>
+                    <div className="letterInput">
+                        <label htmlFor="to">
+                            To:
+                            <select name="to" onChange={(event) => this.handleChange(event, 'to_id')}>
+                                <option key={0} value={null}> </option>
+                                {this.props.pals.map((pal) =>
+                                    pal.pal1_id === this.props.store.user.id ?
+                                        <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
+                                        <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
+                                )}
+                            </select>
+                        </label>
+                    </div>
+                    <div className="letterInput">
+                        <label htmlFor="postmark">
+                            Sent on:
+                            <input name="postmark" type="date"
+                                placeholder="postmark date"
+                                onChange={(event) => this.handleChange(event, 'postmark')} />
+                        </label>
+                    </div>
+
                     <button className="btn" type="submit" name="submit" >send letter!</button>
                 </form>
             </div>

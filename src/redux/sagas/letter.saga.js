@@ -50,6 +50,21 @@ function* addLetter(action) {
     });
 }
 
+function* updateLetter(action) {
+    console.log('in updateLetter');
+    //send the get request to the server so it makes a database request
+    let response = yield axios({
+        method: 'PUT',
+        url: `/api/letters/${action.payload}`,
+    });
+    console.log(response.data);
+
+    //take the info acquired from the database and set it as redux state
+    yield put({
+        type: 'GET_LETTERS_FROM',
+    });
+}
+
 
 
 
@@ -57,6 +72,8 @@ function* letterSaga() {
     yield takeLatest('GET_LETTERS_TO', fetchLettersTo);
     yield takeLatest('GET_LETTERS_FROM', fetchLettersFrom);
     yield takeLatest('ADD_LETTER', addLetter);
+    yield takeLatest('UPDATE_LETTER_FROM', updateLetter);
+
 
 }
 

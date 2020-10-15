@@ -29,6 +29,13 @@ class MyLetters extends Component {
 
     };
 
+    onClick = (e) => {
+        this.props.dispatch({
+            type: 'UPDATE_LETTER_FROM',
+            payload: e.target.value
+        });
+    }
+
     render() {
 
 
@@ -41,7 +48,9 @@ class MyLetters extends Component {
                     {this.props.store.lettersto.map((letter) => <div className="lettersToMe letterRow" key={letter.letter_id}>
                         {letter.from_name}
                         {moment(letter.postmark).format("MMM Do YY")}
-                        {letter.recieved ? "got it" : <button className="btn">i got it!</button>}
+                        {letter.recieved ? "got it" : <button className="btn"
+                            onClick={this.onClick}
+                            value={letter.letter_id}>i got it!</button>}
                     </div>)}
                     <h2>letters from me</h2>
                     {this.props.store.lettersfrom.map((letter) => <div className="lettersFromMe letterRow" key={letter.letter_id}>
