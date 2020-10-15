@@ -1,0 +1,6 @@
+.letterRow{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #9dac68;
+    padding: 15px;
+}

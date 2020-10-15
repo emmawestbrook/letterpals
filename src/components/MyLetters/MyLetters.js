@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import moment from 'moment'
 
+import './MyLetters.css';
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -54,9 +56,23 @@ class MyLetters extends Component {
 
 
         return (
-            <div>
-                {JSON.stringify(this.props.store.letters)}
-
+            <div className="letters">
+                <h2>letters to me</h2>
+                {this.props.store.letters.map((letter) => <div className="lettersToMe letterRow">
+                    {letter.to_id === this.props.store.user.id && letter.from_name}
+                    {letter.to_id === this.props.store.user.id && moment(letter.postmark).format("MMM Do YY")}
+                    {(letter.to_id === this.props.store.user.id && letter.recieved) ?
+                        "got it" :
+                        null}
+                </div>)}
+                <h2>letters from me</h2>
+                {this.props.store.letters.map((letter) => <div className="lettersFromMe letterRow">
+                    {letter.from_id === this.props.store.user.id ? letter.to_name : null}
+                    {letter.from_id === this.props.store.user.id ? moment(letter.postmark).format("MMM Do YY") : null}
+                    {(letter.from_id === this.props.store.user.id && letter.recieved) ?
+                        "got it" :
+                        null}
+                </div>)}
             </div>
         );
     }
