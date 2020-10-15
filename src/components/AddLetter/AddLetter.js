@@ -29,7 +29,12 @@ class AddLetter extends Component {
             type: 'ADD_LETTER',
             payload: this.state
         });
-        //this.props.history.push(`/myprofile`);
+        this.setState({
+            from_id: this.props.store.user.id,
+            to_id: null,
+            postmark: null,
+            recieved: false
+        });
     }
 
     render() {
@@ -40,6 +45,7 @@ class AddLetter extends Component {
                     <label htmlFor="to">
                         To:
                     <select name="to" onChange={(event) => this.handleChange(event, 'to_id')}>
+                            <option key={0} value={null}> </option>
                             {this.props.pals.map((pal) =>
                                 pal.pal1_id === this.props.store.user.id ?
                                     <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
