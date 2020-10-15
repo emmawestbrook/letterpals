@@ -11,10 +11,14 @@ class MyLetters extends Component {
         heading: 'My Letters',
     };
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'GET_LETTERS' });
+    };
+
     render() {
         return (
             <div>
-                <h2>{this.state.heading}</h2>
+                {JSON.stringify(this.props.store.letters)}
             </div>
         );
     }
