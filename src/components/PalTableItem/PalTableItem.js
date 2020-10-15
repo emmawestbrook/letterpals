@@ -33,7 +33,10 @@ class PalTableItem extends Component {
     render() {
         return (
             <div className="plrow" key={this.props.pal.id}>
-                <div >image </div>
+                <div >{this.props.userId === this.props.pal.pal1_id ?
+                    <img src={this.props.pal.pal2_avatar} width="60" alt="avatar" /> :
+                    <img src={this.props.pal.pal1_avatar} width="60" alt="avatar" />
+                } </div>
                 <div >
                     {this.props.userId === this.props.pal.pal1_id ?
                         this.props.pal.pal2_name :

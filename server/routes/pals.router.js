@@ -19,7 +19,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     "pal1"."id" AS "pal1_id",
     "pal2"."id"AS "pal2_id",
     "pal1"."name" AS "pal1_name",
-    "pal2"."name" AS "pal2_name"
+    "pal2"."name" AS "pal2_name",
+    "pal1"."avatar" AS "pal1_avatar",
+    "pal2"."avatar" AS "pal2_avatar"
 
     FROM "pal" AS "pal"
         JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
@@ -40,7 +42,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/:id', (req, res) => {
     console.log('in pal router. getting pal:', req.params.id);
     let palId = req.params.id
-    const queryText = `SELECT "id", "username", "name", "about", "address" FROM "user"
+    const queryText = `SELECT "id", "username", "name", "avatar", "about", "address" FROM "user"
     WHERE "user"."id" = $1;`;
     pool.query(queryText, [palId])
         .then((results) => {
