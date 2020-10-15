@@ -11,8 +11,7 @@ import './MyLetters.css';
 // component.
 class MyLetters extends Component {
     state = {
-        fromMe: [],
-        toMe: []
+        undo: false
     };
 
     componentDidMount() {
@@ -34,6 +33,9 @@ class MyLetters extends Component {
             type: 'UPDATE_LETTER_FROM',
             payload: e.target.value
         });
+        this.setState({
+            undo: true
+        })
     }
 
     render() {

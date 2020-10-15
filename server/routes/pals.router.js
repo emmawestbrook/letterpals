@@ -70,6 +70,4 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-
-
 module.exports = router;
