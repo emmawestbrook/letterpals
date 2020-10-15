@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import ProfilePicUploader from '../ProfilePicUploader/ProfilePicUploader';
+import Dropzone from 'react-dropzone-uploader';
+
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -9,6 +13,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class EditMyProfile extends Component {
     //These state values have to start as null so that the database only updates when there have actually been changes made by the user.
     //If no changes are made by the user, and the value gets to the database, then it will remain the same.
+
     state = {
         name: null,
         avatar: null,
@@ -23,7 +28,9 @@ class EditMyProfile extends Component {
             [propertyName]: event.target.value
         })
         console.log('state is:', this.state);
-    }
+    };
+
+
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -67,7 +74,7 @@ class EditMyProfile extends Component {
                     <input name="avatar" type="text" placeholder={this.props.store.user.avatar} onChange={(event) => this.handleChange(event, 'avatar')} />
                     </label>
                 </div>
-
+                <ProfilePicUploader />
                 <input className="btn" type="submit" name="submit" value="Save changes" />
 
 

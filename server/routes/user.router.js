@@ -5,6 +5,7 @@ const {
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
+const upload = require('../modules/upload');
 
 const router = express.Router();
 
@@ -14,11 +15,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
-router.put('/', rejectUnauthenticated, (req, res) => {
+router.put('/', upload.any(), rejectUnauthenticated, (req, res) => {
   //console.log(req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id);
   //COALESCE in the query checks to see if the value is null, and if so, it keeps the field the same.
   //This way the database is only updated when a user actually changes an input, and if they don't
   //edit it, it stays the same.
+  console.log('req.files', req.files);
   const queryText = `UPDATE "user" 
   SET "name" = COALESCE( $1 , "name"),
     "avatar" = COALESCE( $2 , "avatar"),
@@ -26,7 +28,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     "address" = COALESCE( $4 , "address")
   WHERE "id"=$5;`;
 
-  pool.query(queryText, [req.body.name, req.body.avatar, req.body.about, req.body.address, req.user.id])
+  pool.query(queryText, [req.body.name, req.files.filename, req.body.about, req.body.address, req.user.id])
     .then((result) => {
       res.send(200);
     })
@@ -36,6 +38,25 @@ router.put('/', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
+// router.put('/upload', upload.any(), (req, res) => {
+//   console.log('req.files', req.files);
+
+//   // We can receive other data from the client, too
+//   console.log('req.body', req.body);
+
+//   // Save image paths to the "DB"
+//   req.files.forEach(file => {
+//     `UPDATE "user" 
+//     SET "name" = COALESCE( $1 , "name"),
+//     "avatar" = COALESCE( $2 , "avatar"),
+//     "about" = COALESCE( $3 , "about"),
+//     "address" = COALESCE( $4 , "address")
+//     WHERE "id"=$5`;
+//   });
+
+//   res.sendStatus(201);
+// });
 
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
