@@ -25,7 +25,8 @@ class AddLetter extends Component {
                 <label htmlFor="to">
                     To:
                     <select onChange={(event) => this.handleChange(event, 'to_id')}>
-                        <option >{this.props.pals[0].pal1_name}</option>)}
+                        {this.props.pals.map((pal) =>
+                            <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>)}
                     </select>
                 </label>
                 <label htmlFor="address">
