@@ -59,6 +59,20 @@ router.get('/from', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    console.log('req.body in letter router post', req.body);
+    const queryText = `INSERT INTO "letter" ("from_id", "to_id", "postmark", "recieved")
+    VALUES ($1, $2, $3, $4);`;
+    pool.query(queryText, [req.body.from_id, req.body.to_id, req.body.postmark, req.body.recieved])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        // catch for query
+        .catch((error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
 
 
 

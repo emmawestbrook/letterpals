@@ -26,7 +26,7 @@ CREATE TABLE "letter"
     "from_id" INT REFERENCES "user",
     "to_id" INT REFERENCES "user",
     "postmark" DATE,
-    "recieved" BOOLEAN
+    "recieved" BOOLEAN DEFAULT FALSE
 );
 -- DROP TABLE "letters";
 

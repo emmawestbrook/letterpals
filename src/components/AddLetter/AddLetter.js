@@ -8,37 +8,53 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class AddLetter extends Component {
     state = {
-        pals: 'Class Component',
+        from_id: this.props.store.user.id,
+        to_id: null,
+        postmark: null,
+        recieved: false
     };
 
-    componentDidMount() {
+    handleChange = (event, propertyName) => {
+        this.setState({
+            ...this.state,
+            [propertyName]: event.target.value
+        })
+        console.log('state is:', this.state);
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('handlesubmit clicked');
         this.props.dispatch({
-            type: 'GET_PALS'
+            type: 'ADD_LETTER',
+            payload: this.state
         });
-        console.log('pals in addletter', this.props.pals);
+        //this.props.history.push(`/myprofile`);
     }
 
     render() {
         return (
             <div className="formPanel">
                 <h2>Add letter</h2>
-                <label htmlFor="to">
-                    To:
-                    <select onChange={(event) => this.handleChange(event, 'to_id')}>
-                        {this.props.pals.map((pal) =>
-                            pal.pal1_id === this.props.store.user.id ?
-                                <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
-                                <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
-                        )}
-                    </select>
-                </label>
-                <label htmlFor="address">
-                    Address:
-                    <textarea name="about" type="text" rows="3" cols="42"
-                        name="address" type="text"
-                        placeholder={this.props.store.user.address}
-                        onChange={(event) => this.handleChange(event, 'address')} />
-                </label>
+                <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="to">
+                        To:
+                    <select name="to" onChange={(event) => this.handleChange(event, 'to_id')}>
+                            {this.props.pals.map((pal) =>
+                                pal.pal1_id === this.props.store.user.id ?
+                                    <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
+                                    <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
+                            )}
+                        </select>
+                    </label>
+                    <label htmlFor="postmark">
+                        Sent on:
+                    <input name="postmark" type="date"
+                            placeholder="postmark date"
+                            onChange={(event) => this.handleChange(event, 'postmark')} />
+                    </label>
+                    <button className="btn" type="submit" name="submit" >send letter!</button>
+                </form>
             </div>
         );
     }
