@@ -3,18 +3,32 @@ import axios from 'axios';
 
 
 
-function* fetchLetters(action) {
+function* fetchLettersTo(action) {
     //send the get request to the server so it makes a database request
-    console.log('action.payload is', action.payload);
     let response = yield axios({
         method: 'GET',
-        url: `/api/letters`
+        url: `/api/letters/to`
     });
     console.log(response.data);
 
     //take the info acquired from the database and set it as redux state
     yield put({
-        type: 'SET_LETTERS',
+        type: 'SET_LETTERS_TO',
+        payload: response.data
+    });
+}
+
+function* fetchLettersFrom(action) {
+    //send the get request to the server so it makes a database request
+    let response = yield axios({
+        method: 'GET',
+        url: `/api/letters/from`
+    });
+    console.log(response.data);
+
+    //take the info acquired from the database and set it as redux state
+    yield put({
+        type: 'SET_LETTERS_FROM',
         payload: response.data
     });
 }
@@ -23,7 +37,9 @@ function* fetchLetters(action) {
 
 
 function* letterSaga() {
-    yield takeLatest('GET_LETTERS', fetchLetters);
+    yield takeLatest('GET_LETTERS_TO', fetchLettersTo);
+    yield takeLatest('GET_LETTERS_FROM', fetchLettersFrom);
+
 }
 
 export default letterSaga;

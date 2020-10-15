@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import moment from 'moment'
+import AddLetter from '../AddLetter/AddLetter';
 
 import './MyLetters.css';
 // Basic class component structure for React with default state
@@ -16,63 +17,41 @@ class MyLetters extends Component {
 
     componentDidMount() {
         this.props.dispatch({
-            type: 'GET_LETTERS'
+            type: 'GET_LETTERS_TO'
+        });
+        this.props.dispatch({
+            type: 'GET_LETTERS_FROM'
+        });
+        this.props.dispatch({
+            type: 'GET_PALS'
         });
 
-        //this.letterSort(this.props.store.letters);
 
-        // this.setState({
-        //     fromMe: letters.fromMe,
-        //     toMe: letters.toMe
-        // });
 
     };
-
-    // letterSort = (letters) => {
-    //     let lettersFromMe = [];
-    //     let lettersToMe = [];
-    //     console.log('letters', letters);
-    //     for (let i = 0; i < letters.length; i++) {
-    //         if (letters[i].from_id === this.props.store.user.id) {
-    //             lettersFromMe.push(letters[i]);
-    //         }
-    //         else if (letters[i].from_id === this.props.store.user.id) {
-    //             lettersToMe.push(letters[i]);
-    //         }
-    //     }
-    //     let myLetters = {
-    //         fromMe: lettersFromMe,
-    //         toMe: lettersToMe
-    //     };
-    //     console.log('my letters', myLetters);
-    //     this.setState({
-    //         fromMe: letters.fromMe,
-    //         toMe: letters.toMe
-    //     });
-    //     return myLetters;
-    // }
 
     render() {
 
 
         return (
-            <div className="letters">
-                <h2>letters to me</h2>
-                {this.props.store.letters.map((letter) => <div className="lettersToMe letterRow">
-                    {letter.to_id === this.props.store.user.id && letter.from_name}
-                    {letter.to_id === this.props.store.user.id && moment(letter.postmark).format("MMM Do YY")}
-                    {(letter.to_id === this.props.store.user.id && letter.recieved) ?
-                        "got it" :
-                        null}
-                </div>)}
-                <h2>letters from me</h2>
-                {this.props.store.letters.map((letter) => <div className="lettersFromMe letterRow">
-                    {letter.from_id === this.props.store.user.id ? letter.to_name : null}
-                    {letter.from_id === this.props.store.user.id ? moment(letter.postmark).format("MMM Do YY") : null}
-                    {(letter.from_id === this.props.store.user.id && letter.recieved) ?
-                        "got it" :
-                        null}
-                </div>)}
+            <div>
+                <AddLetter pals={this.props.store.pals} />
+
+                <div className="letters">
+                    <h2>letters to me</h2>
+                    {this.props.store.lettersto.map((letter) => <div className="lettersToMe letterRow" key={letter.letter_id}>
+                        {letter.from_name}
+                        {moment(letter.postmark).format("MMM Do YY")}
+                        {letter.recieved ? "got it" : <button className="btn">i got it!</button>}
+                    </div>)}
+                    <h2>letters from me</h2>
+                    {this.props.store.lettersfrom.map((letter) => <div className="lettersFromMe letterRow" key={letter.letter_id}>
+                        {letter.to_name}
+                        {moment(letter.postmark).format("MMM Do YY")}
+                        {letter.recieved ? "got it" : "hasn't arrived yet"}
+
+                    </div>)}
+                </div>
             </div>
         );
     }

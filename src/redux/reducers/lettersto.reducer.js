@@ -1,6 +1,6 @@
-const lettersReducer = (state = [], action) => {
+const lettersToReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_LETTERS':
+        case 'SET_LETTERS_TO':
             return action.payload;
         default:
             return state;
@@ -11,4 +11,4 @@ const lettersReducer = (state = [], action) => {
 
 // user will be on the redux state at:
 // state.user
-export default lettersReducer;
+export default lettersToReducer;
