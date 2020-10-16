@@ -61,7 +61,7 @@ function* updateLetter(action) {
 
     //take the info acquired from the database and set it as redux state
     yield put({
-        type: 'GET_LETTERS_FROM',
+        type: 'GET_LETTERS_TO',
     });
 }
 
@@ -72,7 +72,7 @@ function* letterSaga() {
     yield takeLatest('GET_LETTERS_TO', fetchLettersTo);
     yield takeLatest('GET_LETTERS_FROM', fetchLettersFrom);
     yield takeLatest('ADD_LETTER', addLetter);
-    yield takeLatest('UPDATE_LETTER_FROM', updateLetter);
+    yield takeLatest('UPDATE_LETTER_TO', updateLetter);
 
 
 }

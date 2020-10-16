@@ -45,7 +45,7 @@ class MyLetters extends Component {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 this.props.dispatch({
-                    type: 'UPDATE_LETTER_FROM',
+                    type: 'UPDATE_LETTER_TO',
                     payload: letter
                 });
                 Swal.fire('another letter safely delivered!', '', 'success');
