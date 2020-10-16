@@ -60,7 +60,10 @@ class PalSearch extends Component {
                 />
                 <button className="btn" onClick={this.handleSearch}>search</button>
                 {this.state.renderPal ?
-                    <h1>{this.props.store.oneuser.name}</h1> :
+                    <div className="palReturn">
+                        <h1>{this.props.store.oneuser.name}</h1>
+                        <h2>{this.props.store.oneuser.username}</h2>
+                    </div> :
                     <h1>no pal</h1>
 
                 }
