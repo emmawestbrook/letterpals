@@ -72,4 +72,19 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
+router.post('/', (req, res) => {
+    console.log('req.body in pal router post', req.body.id);
+    const queryText = `INSERT INTO "pal" ("pal1_id", "pal2_id")
+    VALUES ($1, $2);`;
+    pool.query(queryText, [req.user.id, req.body.id])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        // catch for query
+        .catch((error) => {
+            console.log(`Error on query ${error}`);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;

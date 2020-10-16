@@ -14,10 +14,11 @@ class TemplateClass extends Component {
     handleClick = () => {
         this.setState({ addPal: true });
         console.log(this.state);
-        // this.props.dispatch({
-        //     type: 'ADD_PAL',
-        //     payload: this.props.store.oneuser.id
-        // });
+        console.log('ONEUSER.ID', this.props.store.oneuser);
+        this.props.dispatch({
+            type: 'ADD_PAL',
+            payload: this.props.store.oneuser
+        });
     }
 
     render() {
