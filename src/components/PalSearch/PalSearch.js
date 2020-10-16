@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import PalProfile from '../PalProfile/PalProfile';
+import OnePal from '../OnePal/OnePal';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -60,7 +60,7 @@ class PalSearch extends Component {
                 />
                 <button className="btn" onClick={this.handleSearch}>search</button>
                 {this.state.renderPal ?
-                    <h1>{this.props.store.oneuser.username}</h1> :
+                    <h1>{this.props.store.oneuser.name}</h1> :
                     <h1>no pal</h1>
 
                 }

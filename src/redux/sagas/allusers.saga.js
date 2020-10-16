@@ -17,7 +17,7 @@ function* getUsers(action) {
 function* getOneUser(action) {
     try {
         const response = yield axios.get(`/api/allusers/${action.payload}`);
-        console.log(response.data);
+        console.log("SET_ONE_USER", response.data);
 
         yield put({
             type: 'SET_ONE_USER',

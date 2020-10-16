@@ -22,11 +22,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
-    console.log("user id", req.params.id);
+    console.log("user id in get one user", req.params.id);
     const queryText = `SELECT "id", "username", "name", "avatar" FROM "user" WHERE "id"=$1;`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
-            res.send(result.rows);
+            console.log('results.rows', result.rows)
+            res.send(result.rows[0]);
         })
         // catch for query
         .catch((error) => {
