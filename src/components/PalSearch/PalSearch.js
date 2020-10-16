@@ -14,7 +14,7 @@ class PalSearch extends Component {
     };
 
     componentDidMount() {
-        const action = { type: 'GET_USERS' };
+        const action = { type: 'GET_ALL_USERS' };
         this.props.dispatch(action);
     };
 
@@ -24,8 +24,8 @@ class PalSearch extends Component {
                 <h2>{this.state.heading}</h2>
                 <Autocomplete
                     id="combo-box-demo"
-                    options={this.props.store.users}
-                    getOptionLabel={(option) => option.username}
+                    options={this.props.store.allusers}
+                    getOptionLabel={(option) => option.name}
                     style={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
                 />
