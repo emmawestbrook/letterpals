@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import moment from 'moment'
 import AddLetter from '../AddLetter/AddLetter';
+import Swal from 'sweetalert2';
+
 
 import './MyLetters.css';
 // Basic class component structure for React with default state
@@ -11,7 +13,7 @@ import './MyLetters.css';
 // component.
 class MyLetters extends Component {
     state = {
-        undo: false
+        toggleLetter: false,
     };
 
     componentDidMount() {
@@ -24,18 +26,37 @@ class MyLetters extends Component {
         this.props.dispatch({
             type: 'GET_PALS'
         });
+        // this.setState({ reload: false });
 
 
     };
 
     onClick = (e) => {
-        this.props.dispatch({
-            type: 'UPDATE_LETTER_FROM',
-            payload: e.target.value
+        let letter = e.target.value;
+        Swal.fire({
+            title: 'this letter was delivered?',
+            text: "you won't be able to undo this action!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#9dac68',
+            cancelButtonColor: '#e26d5c',
+            confirmButtonText: 'yes, i got it!'
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                this.props.dispatch({
+                    type: 'UPDATE_LETTER_FROM',
+                    payload: letter
+                });
+                Swal.fire('another letter safely delivered!', '', 'success');
+                //this.props.history.push(`/pallist`);
+                this.setState({ toggleLetter: !this.state.toggleLetter }, () => {
+                    console.log(this.state,);
+                });
+            }
         });
-        this.setState({
-            undo: true
-        })
+
+
     }
 
     render() {
@@ -50,9 +71,10 @@ class MyLetters extends Component {
                     {this.props.store.lettersto.map((letter) => <div className="lettersToMe letterRow" key={letter.letter_id}>
                         {letter.from_name}
                         {moment(letter.postmark).format("MMM Do YY")}
-                        {letter.recieved ? "got it" : <button className="btn"
-                            onClick={this.onClick}
-                            value={letter.letter_id}>i got it!</button>}
+                        {letter.recieved ? "got it" :
+                            <button className="btn"
+                                onClick={this.onClick}
+                                value={letter.letter_id}>i got it!</button>}
                     </div>)}
                     <h2>letters from me</h2>
                     {this.props.store.lettersfrom.map((letter) => <div className="lettersFromMe letterRow" key={letter.letter_id}>
