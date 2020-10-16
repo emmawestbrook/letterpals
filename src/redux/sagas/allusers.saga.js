@@ -14,8 +14,24 @@ function* getUsers(action) {
     }
 }
 
+function* getOneUser(action) {
+    try {
+        const response = yield axios.get(`/api/allusers/${action.payload}`);
+        console.log(response.data);
+
+        yield put({
+            type: 'SET_ONE_USER',
+            payload: response.data
+        });
+    } catch (error) {
+        console.log('User get request failed', error);
+    }
+}
+
 function* allusersSaga() {
     yield takeLatest('GET_ALL_USERS', getUsers);
+    yield takeLatest('GET_ONE_USER', getOneUser);
+
 
 }
 

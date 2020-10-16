@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
+import PalProfile from '../PalProfile/PalProfile';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -10,7 +11,8 @@ import TextField from '@material-ui/core/TextField';
 // component.
 class PalSearch extends Component {
     state = {
-        heading: 'Pal Search',
+        searchid: null,
+        renderPal: false
     };
 
     componentDidMount() {
@@ -18,17 +20,50 @@ class PalSearch extends Component {
         this.props.dispatch(action);
     };
 
+    handleChange = (event, values) => {
+        this.setState({
+            searchid: values.id
+        })
+        console.log(this.state);
+    }
+
+    handleSearch = () => {
+        const action = { type: 'GET_ONE_USER', payload: this.state.searchid };
+        this.props.dispatch(action);
+        this.setState({
+            searchid: null,
+            renderPal: true
+        })
+        console.log(this.state);
+    }
     render() {
         return (
             <div>
-                <h2>{this.state.heading}</h2>
+                <h2>pal search</h2>
                 <Autocomplete
-                    id="combo-box-demo"
+                    id="pal-search"
                     options={this.props.store.allusers}
-                    getOptionLabel={(option) => option.name}
-                    style={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+                    getOptionLabel={(option) => option.username}
+                    //value={this.props.store.allusers.id}
+                    onChange={this.handleChange}
+                    //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
+
+                    style={{ width: 600 }}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Search for username"
+                            margin="normal"
+                            variant="outlined"
+                            InputProps={{ ...params.InputProps, type: 'search' }}
+                        />)}
                 />
+                <button className="btn" onClick={this.handleSearch}>search</button>
+                {this.state.renderPal ?
+                    <h1>{this.props.store.oneuser.username}</h1> :
+                    <h1>no pal</h1>
+
+                }
             </div>
         );
     }
