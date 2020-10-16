@@ -5,6 +5,8 @@ import pals from './pals.reducer';
 import palprofile from './palprofile.reducer';
 import lettersto from './lettersto.reducer';
 import lettersfrom from './lettersfrom.reducer';
+import allusers from './allusers.reducer';
+import oneuser from './oneuser.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   pals,
   palprofile,
   lettersto,
-  lettersfrom
+  lettersfrom,
+  allusers,
+  oneuser
 });
 
 export default rootReducer;

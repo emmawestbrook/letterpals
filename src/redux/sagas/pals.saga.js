@@ -47,14 +47,22 @@ function* deletePal(action) {
     });
 }
 
-
+function* addPal(action) {
+    //send the get request to the server so it makes a database request
+    console.log('action.payload is', action.payload);
+    yield axios.post('/api/pals', action.payload);
+    //take the info acquired from the database and set it as redux state
+    yield put({
+        type: 'GET_PALS',
+    });
+}
 
 
 function* palsSaga() {
     yield takeLatest('GET_PALS', getPals);
     yield takeLatest('FETCH_PAL', fetchPal);
     yield takeLatest('DELETE_PAL', deletePal);
-
+    yield takeLatest('ADD_PAL', addPal);
 
 }
 
