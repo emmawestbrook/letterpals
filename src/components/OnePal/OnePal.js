@@ -8,14 +8,27 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class TemplateClass extends Component {
     state = {
-        heading: 'Class Component',
+        addPal: false,
     };
+
+    handleClick = () => {
+        this.setState({ addPal: true });
+        console.log(this.state);
+        // this.props.dispatch({
+        //     type: 'ADD_PAL',
+        //     payload: this.props.store.oneuser.id
+        // });
+    }
 
     render() {
         return (
-            <div>
-                <h1>onepal</h1>
-                <h1>{this.props.store.oneuser.username}</h1>
+            <div className="palReturn formPanel">
+                <h1>{this.props.store.oneuser.name}</h1>
+                <h2 className="username">@{this.props.store.oneuser.username}</h2>
+                {this.state.addPal ?
+                    <p>pal added!</p> :
+                    <button className="btn" onClick={this.handleClick}>add pal</button>
+                }
             </div>
         );
     }
