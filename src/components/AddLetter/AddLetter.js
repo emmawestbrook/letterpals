@@ -23,7 +23,7 @@ class AddLetter extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         console.log('handlesubmit clicked');
         this.props.dispatch({
             type: 'ADD_LETTER',
@@ -59,6 +59,7 @@ class AddLetter extends Component {
                         <label htmlFor="postmark">
                             Sent on:
                             <input name="postmark" type="date"
+                                // value={this.state.postmark}
                                 required
                                 placeholder="postmark date"
                                 onChange={(event) => this.handleChange(event, 'postmark')} />

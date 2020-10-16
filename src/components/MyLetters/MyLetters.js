@@ -42,14 +42,12 @@ class MyLetters extends Component {
             cancelButtonColor: '#e26d5c',
             confirmButtonText: 'yes, i got it!'
         }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
                 this.props.dispatch({
                     type: 'UPDATE_LETTER_TO',
                     payload: letter
                 });
                 Swal.fire('another letter safely delivered!', '', 'success');
-                //this.props.history.push(`/pallist`);
                 this.setState({ toggleLetter: !this.state.toggleLetter }, () => {
                     console.log(this.state,);
                 });
@@ -69,18 +67,18 @@ class MyLetters extends Component {
                 <div className="letters">
                     <h2>letters to me</h2>
                     {this.props.store.lettersto.map((letter) => <div className="lettersToMe letterRow" key={letter.letter_id}>
-                        {letter.from_name}
-                        {moment(letter.postmark).format("MMM Do YY")}
-                        {letter.recieved ? "got it" :
+                        <div>{letter.from_name}</div>
+                        <div>{moment(letter.postmark).format("MMM Do YY")}</div>
+                        <div>{letter.recieved ? "got it" :
                             <button className="btn"
                                 onClick={this.onClick}
-                                value={letter.letter_id}>i got it!</button>}
+                                value={letter.letter_id}>i got it!</button>}</div>
                     </div>)}
                     <h2>letters from me</h2>
                     {this.props.store.lettersfrom.map((letter) => <div className="lettersFromMe letterRow" key={letter.letter_id}>
-                        {letter.to_name}
-                        {moment(letter.postmark).format("MMM Do YY")}
-                        {letter.recieved ? "got it" : "hasn't arrived yet"}
+                        <div>{letter.to_name}</div>
+                        <div>{moment(letter.postmark).format("MMM Do YY")}</div>
+                        <div>{letter.recieved ? "got it" : "hasn't arrived yet"}</div>
 
                     </div>)}
                 </div>

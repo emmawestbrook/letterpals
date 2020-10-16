@@ -1,3 +1,8 @@
+.letters{
+    width: 80%;
+    margin: auto;
+}
+
 .letterRow{
     display: flex;
     justify-content: space-between;
@@ -8,3 +13,4 @@
 .letterInput {
     padding: 20px;
 }
+
