@@ -11,10 +11,14 @@ class TemplateClass extends Component {
         addPal: false,
     };
 
+
     handleClick = () => {
         this.setState({ addPal: true });
         console.log(this.state);
         console.log('ONEUSER.ID', this.props.store.oneuser);
+        // for (let i = 0; i < this.props.store.pal.length; i++) {
+        //     if (this.props.store.pal.pal1_id ===)
+        // }
         this.props.dispatch({
             type: 'ADD_PAL',
             payload: this.props.store.oneuser
