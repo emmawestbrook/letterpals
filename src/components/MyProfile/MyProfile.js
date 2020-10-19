@@ -23,12 +23,20 @@ class MyProfile extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.props.store.user.name}</h1>
-                <h2 className="username">@{this.props.store.user.username}</h2>
-                <p>{this.props.store.user.about}</p>
-                <p>{this.props.store.user.address}</p>
-                <button className="btn" onClick={this.handleClick}>edit my profile</button>
+            <div className="profile">
+                <div className="profileAvatar ">
+                    <img src={this.props.store.user.avatar} width="400" alt="avatar" className="img-circle" />
+                    <h2 className="username">@ {this.props.store.user.username}</h2>
+                    <button className="btn" onClick={this.handleClick}>edit my profile</button>
+
+                </div>
+                <div className="profileInfo ">
+                    <h1 className="name">{this.props.store.user.name}</h1>
+                    <h2>about</h2>
+                    <p>{this.props.store.user.about}</p>
+                    <h2>address</h2>
+                    <p>{this.props.store.user.address}</p>
+                </div>
             </div>
         );
     }

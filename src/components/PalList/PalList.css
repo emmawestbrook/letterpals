@@ -1,4 +1,7 @@
-
+.img-circle {
+    border-radius: 50%;
+    /* margin: 10px 0px 0px 40px; */
+}
 
 
 h1{
@@ -22,7 +25,7 @@ h1{
     padding: 20px;
     text-align: left;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     color: #fff;
     text-transform: uppercase;
     
@@ -30,8 +33,9 @@ h1{
 .plrow{
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px #9dac68;
-    padding: 15px;
+    border-bottom: dashed 1px #9dac68;
+    height: 100px;
+    padding: 20px;
 }
 
 .plrow:hover{
@@ -55,6 +59,6 @@ h1{
     font-weight: 300;
     font-size: 16px;
     color: black;
-    border-bottom: solid 1px #9dac68;
+    border-bottom: dashed 1px #9dac68;
 }
   

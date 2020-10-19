@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
 html,
 body,
 #react-root {
@@ -6,7 +6,7 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Space Mono', monospace;
   margin: 0px;
 }
 
@@ -31,6 +31,7 @@ Button
 
 .btn {
   display: inline-block;
+  font-family: 'Space Mono', monospace;
   padding: 10px 20px;
   border-color: #e26d5c;
   border-width: 1px 1px 3px;

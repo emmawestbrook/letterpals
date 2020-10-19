@@ -48,20 +48,23 @@ class PalProfile extends Component {
 
     render() {
         return (
-            <div>
-                <div className="profileAvatar grid-col grid-col_4">
-                    <img src={this.props.store.palprofile.avatar} width="150" alt="avatar" />
-                    <h1>{this.props.store.palprofile.name}</h1>
+            <div className="profile">
+                <div className="profileAvatar ">
+                    <img src={this.props.store.palprofile.avatar} width="400" alt="avatar" className="img-circle" />
+                    <h2 className="username">@ {this.props.store.palprofile.username}</h2>
+                    <button className="btn" onClick={this.handleClick}>I sent them a letter!</button>
+                    {/* {this.state.showLetterForm && <AddLetter />} */}
+                    <button className="btn" onClick={this.handleDelete}>remove from pals</button>
 
                 </div>
-                <div className="profileInfo grid-col grid-col_8">
-                    <h2 className="username">@{this.props.store.palprofile.username}</h2>
+                <div className="profileInfo ">
+                    <h1 className="name">{this.props.store.palprofile.name}</h1>
+                    <h2>about</h2>
                     <p>{this.props.store.palprofile.about}</p>
+                    <h2>address</h2>
                     <p>{this.props.store.palprofile.address}</p>
                 </div>
-                <button className="btn" onClick={this.handleClick}>I sent them a letter!</button>
-                {/* {this.state.showLetterForm && <AddLetter />} */}
-                <button className="btn" onClick={this.handleDelete}>remove from pals</button>
+
 
             </div>
         );
