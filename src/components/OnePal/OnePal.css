@@ -1,0 +1,18 @@
+.palReturn{
+    /* display: flex;
+    align-content: space-between; */
+    width: 60%;
+    padding: 25px;
+    margin: 0 auto 20px;
+    background-color: peachpuff;
+    border: dashed #96483d 1px;
+    /* border-color: #96483d;
+    border-width: 1px 1px 3px; */
+    border-radius: 4px;
+}
+
+.profileimg {
+    border-radius: 50%;
+    margin: auto;
+    
+  }

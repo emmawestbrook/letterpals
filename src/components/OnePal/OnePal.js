@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './OnePal.css';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -27,9 +28,11 @@ class TemplateClass extends Component {
 
     render() {
         return (
-            <div className="palReturn formPanel">
+            <div className="palReturn">
                 <h1>{this.props.store.oneuser.name}</h1>
+                <img src={this.props.store.oneuser.avatar} width="200" alt="avatar" className="profileimg" />
                 <h2 className="username">@{this.props.store.oneuser.username}</h2>
+                <p>{this.props.store.oneuser.about}</p>
                 {this.state.addPal ?
                     <p>pal added!</p> :
                     <button className="btn" onClick={this.handleClick}>add pal</button>

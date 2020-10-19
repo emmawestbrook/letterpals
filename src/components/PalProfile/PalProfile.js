@@ -59,9 +59,9 @@ class PalProfile extends Component {
                 </div>
                 <div className="profileInfo ">
                     <h1 className="name">{this.props.store.palprofile.name}</h1>
-                    <h2>about</h2>
+                    <h2 className="subhead">about</h2>
                     <p>{this.props.store.palprofile.about}</p>
-                    <h2>address</h2>
+                    <h2 className="subhead">address</h2>
                     <p>{this.props.store.palprofile.address}</p>
                 </div>
 

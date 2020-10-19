@@ -1,26 +1,45 @@
-.letterFormPanel {
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: unset;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+
+.letterform{
     width: 70%;
-    padding: 25px;
-    margin: 0 auto 20px;
-    color: #472d30;
+    margin: auto auto 50px auto;
+    box-sizing: border-box;
     background-color: peachpuff;
     border-radius: 3px;
+    padding: 25px;
+    /* margin: 0px 40px 40px 40px; */
     box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+
 }
+
 label{
   padding: 10px;  
 }
-.letterInput{
-    flex: 1;
-    padding: 30px;
+
+
+
+.formheader{
+    color: #9dac68;
+    text-align: center;
+    /* margin-left: 50px; */
+
 }
 
-.sendbtn{
-    margin-left: 50px;
+.letterselect {
+    width: 30%;
+    padding: 16px 20px;
+    border: #e26d5c solid 2px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 14px;
+}
+
+.letterinput {
+    width: 20%;
+    margin-right: 30px;
+    padding: 16px 20px;
+    border: #e26d5c solid 2px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    font-size: 14px;
+
 }

@@ -1,0 +1,15 @@
+.searchDiv{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    /* border: 1px dashed; */
+    margin: 30px auto auto ;
+}
+
+h2{
+    /* padding: 30px; */
+    text-align: center;
+    margin: auto;
+}
+

@@ -4,11 +4,6 @@
 }
 .name{
   border-bottom: dashed 1px #9dac68;
-
-}
-h2{
-  color: #9dac68;
-
 }
 
 .profile{
@@ -20,6 +15,10 @@ h2{
 
 }
 
+.subhead{
+  color: #9dac68;
+  text-align: left;
+}
 
 .profileAvatar{
   justify-content: center;

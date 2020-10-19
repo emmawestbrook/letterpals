@@ -4,6 +4,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import OnePal from '../OnePal/OnePal';
+import './PalSearch.css';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -40,25 +41,27 @@ class PalSearch extends Component {
         return (
             <div>
                 <h2>pal search</h2>
-                <Autocomplete
-                    id="pal-search"
-                    options={this.props.store.allusers}
-                    getOptionLabel={(option) => option.username}
-                    //value={this.props.store.allusers.id}
-                    onChange={this.handleChange}
-                    //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
+                <div className="searchDiv">
+                    <Autocomplete
+                        id="pal-search"
+                        options={this.props.store.allusers}
+                        getOptionLabel={(option) => option.username}
+                        //value={this.props.store.allusers.id}
+                        onChange={this.handleChange}
+                        //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
 
-                    style={{ width: 600 }}
-                    renderInput={(params) => (
-                        <TextField
-                            {...params}
-                            label="Search for username"
-                            margin="normal"
-                            variant="outlined"
-                            InputProps={{ ...params.InputProps, type: 'search' }}
-                        />)}
-                />
-                <button className="btn" onClick={this.handleSearch}>search</button>
+                        style={{ width: 600 }}
+                        renderInput={(params) => (
+                            <TextField
+                                {...params}
+                                label="Search for username"
+                                margin="normal"
+                                variant="outlined"
+                                InputProps={{ ...params.InputProps, type: 'search' }}
+                            />)}
+                    />
+                    <button className="btn" onClick={this.handleSearch}>search</button>
+                </div>
                 {this.state.renderPal && <OnePal />}
             </div>
         );
