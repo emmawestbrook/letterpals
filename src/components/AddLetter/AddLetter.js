@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import './AddLetter.css';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -39,34 +40,31 @@ class AddLetter extends Component {
 
     render() {
         return (
-            <div className="formPanel">
+            <div className="letterFormPanel">
                 <h2>Add letter</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="letterInput">
-                        <label htmlFor="to">
-                            To:
-                            <select name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
-                                <option key={0} value={null}> </option>
-                                {this.props.pals.map((pal) =>
-                                    pal.pal1_id === this.props.store.user.id ?
-                                        <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
-                                        <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
-                                )}
-                            </select>
-                        </label>
-                    </div>
-                    <div className="letterInput">
-                        <label htmlFor="postmark">
-                            Sent on:
-                            <input name="postmark" type="date"
-                                // value={this.state.postmark}
-                                required
-                                placeholder="postmark date"
-                                onChange={(event) => this.handleChange(event, 'postmark')} />
-                        </label>
+                    <div className="inputs">
+                        <label className="letterInput" htmlFor="to">To:</label>
+
+                        <select name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
+                            <option key={0} value={null}> </option>
+                            {this.props.pals.map((pal) =>
+                                pal.pal1_id === this.props.store.user.id ?
+                                    <option key={pal.pal2_id} value={pal.pal2_id}>{pal.pal2_name}</option> :
+                                    <option key={pal.pal1_id} value={pal.pal1_id}>{pal.pal1_name}</option>
+                            )}
+                        </select>
+
+                        <label className="letterInput" htmlFor="postmark">Sent on:</label>
+
+                        <input name="postmark" type="date"
+                            value={this.state.postmark}
+                            required
+                            placeholder="postmark date"
+                            onChange={(event) => this.handleChange(event, 'postmark')} />
+                        <button className="sendbtn btn" type="submit" name="submit" >send letter!</button>
                     </div>
 
-                    <button className="btn" type="submit" name="submit" >send letter!</button>
                 </form>
             </div>
         );

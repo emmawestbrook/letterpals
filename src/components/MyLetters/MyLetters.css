@@ -1,6 +1,10 @@
+
+
 .letters{
-    width: 80%;
+    width: 90%;
     margin: auto;
+    display: flex;
+    align-content: space-between;
 }
 
 .letterRow{
@@ -8,9 +12,34 @@
     justify-content: space-between;
     border-bottom: solid 1px #9dac68;
     padding: 15px;
+
+}
+.pm{
+    /* flex-grow: 2;     */
+    text-align: center;
+    justify-content: center;
+    flex-basis: 30%;
+    
+}
+.notpm{
+    /* flex-shrink: 2; */
+    flex-basis: 30%;
 }
 
-.letterInput {
-    padding: 20px;
+
+
+.lettersToMe, .lettersFromMe{
+    /* flex-grow: 2; */
+    justify-content: space-between;
+    flex-basis: 45%;
+    margin: 30px;
+
 }
+.ltrheader{
+    color: #9dac68;
+}
+
+
+
+
 

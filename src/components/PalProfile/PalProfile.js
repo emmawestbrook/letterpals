@@ -4,12 +4,15 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import Swal from 'sweetalert2';
 
 import './PalProfile.css';
+import AddLetter from '../AddLetter/AddLetter';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
 class PalProfile extends Component {
+
+    state = { showLetterForm: false };
 
 
     handleDelete = () => {
@@ -35,6 +38,14 @@ class PalProfile extends Component {
         });
     }
 
+    handleClick = () => {
+        this.props.history.push('/myletters');
+        // this.setState({
+        //     showLetterForm: true
+        // });
+
+    }
+
     render() {
         return (
             <div>
@@ -48,7 +59,8 @@ class PalProfile extends Component {
                     <p>{this.props.store.palprofile.about}</p>
                     <p>{this.props.store.palprofile.address}</p>
                 </div>
-
+                <button className="btn" onClick={this.handleClick}>I sent them a letter!</button>
+                {/* {this.state.showLetterForm && <AddLetter />} */}
                 <button className="btn" onClick={this.handleDelete}>remove from pals</button>
 
             </div>

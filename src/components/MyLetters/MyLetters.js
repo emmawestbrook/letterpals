@@ -65,22 +65,26 @@ class MyLetters extends Component {
                 <AddLetter pals={this.props.store.pals} />
 
                 <div className="letters">
-                    <h2>letters to me</h2>
-                    {this.props.store.lettersto.map((letter) => <div className="lettersToMe letterRow" key={letter.letter_id}>
-                        <div>{letter.from_name}</div>
-                        <div>{moment(letter.postmark).format("MMM Do YY")}</div>
-                        <div>{letter.recieved ? "got it" :
-                            <button className="btn"
-                                onClick={this.onClick}
-                                value={letter.letter_id}>i got it!</button>}</div>
-                    </div>)}
-                    <h2>letters from me</h2>
-                    {this.props.store.lettersfrom.map((letter) => <div className="lettersFromMe letterRow" key={letter.letter_id}>
-                        <div>{letter.to_name}</div>
-                        <div>{moment(letter.postmark).format("MMM Do YY")}</div>
-                        <div>{letter.recieved ? "got it" : "hasn't arrived yet"}</div>
+                    <div className="lettersToMe">
+                        <h2 className="ltrheader">letters to me</h2>
+                        {this.props.store.lettersto.map((letter) => <div className=" letterRow" key={letter.letter_id}>
+                            <div className="notpm">{letter.from_name}</div>
+                            <div className="pm">{moment(letter.postmark).format("MMM Do YY")}</div>
+                            <div className="notpm">{letter.recieved ? "got it" :
+                                <button className="btn"
+                                    onClick={this.onClick}
+                                    value={letter.letter_id}>i got it!</button>}</div>
+                        </div>)}
+                    </div>
+                    <div className="lettersFromMe">
+                        <h2 className="ltrheader">letters from me</h2>
+                        {this.props.store.lettersfrom.map((letter) => <div className=" letterRow" key={letter.letter_id}>
+                            <div className="notpm">{letter.to_name}</div>
+                            <div className="pm">{moment(letter.postmark).format("MMM Do YY")}</div>
+                            <div className="notpm">{letter.recieved ? "got it" : "hasn't arrived yet"}</div>
 
-                    </div>)}
+                        </div>)}
+                    </div>
                 </div>
             </div>
         );
