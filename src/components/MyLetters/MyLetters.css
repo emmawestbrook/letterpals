@@ -26,9 +26,7 @@
     flex-basis: 30%;
 }
 
-.letterInput {
-    padding: 20px;
-}
+
 
 .lettersToMe, .lettersFromMe{
     /* flex-grow: 2; */
