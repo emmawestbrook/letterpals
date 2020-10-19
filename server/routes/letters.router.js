@@ -21,7 +21,8 @@ router.get('/to', rejectUnauthenticated, (req, res) => {
                         FROM "letter" AS "letter"
                         JOIN "user" "from" ON "from"."id"="letter"."from_id"
                         JOIN "user" "to" ON "to"."id"="letter"."to_id" 
-                        WHERE "to_id"=$1;`;
+                        WHERE "to_id"=$1
+                        ORDER BY "postmark" DESC;`;
     pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);
@@ -47,7 +48,8 @@ router.get('/from', rejectUnauthenticated, (req, res) => {
                         FROM "letter" AS "letter"
                         JOIN "user" "from" ON "from"."id"="letter"."from_id"
                         JOIN "user" "to" ON "to"."id"="letter"."to_id" 
-                        WHERE "from_id"=$1`;
+                        WHERE "from_id"=$1
+                        ORDER BY "postmark" DESC`;
     pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);

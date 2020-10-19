@@ -23,7 +23,7 @@ class AddLetter extends Component {
     }
 
     handleSubmit = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         console.log('handlesubmit clicked');
         this.props.dispatch({
             type: 'ADD_LETTER',
