@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withRouter } from 'react-router-dom';
+// import '../PalList/PalList.css';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -45,7 +46,7 @@ class PendingPalTableItem extends Component {
                         this.props.pal.pal2_name :
                         this.props.pal.pal1_name
                     }</div>
-                <div ><button className="btn" onClick={this.handleAdd}>add pal</button>
+                <div ><button className="btn" onClick={this.handleAdd}>accept pal</button>
                     <button className="btn" onClick={this.handleDelete}>delete request</button> </div>
             </div>
         );
