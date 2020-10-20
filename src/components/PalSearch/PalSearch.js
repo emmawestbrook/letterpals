@@ -13,7 +13,8 @@ import './PalSearch.css';
 class PalSearch extends Component {
     state = {
         searchid: null,
-        renderPal: false
+        renderPal: false,
+        notFound: null
     };
 
     componentDidMount() {
@@ -29,20 +30,31 @@ class PalSearch extends Component {
     }
 
     handleSearch = () => {
-        const action = { type: 'GET_ONE_USER', payload: this.state.searchid };
-        this.props.dispatch(action);
-        this.setState({
-            searchid: null,
-            renderPal: true
-        })
+        if (this.state.searchid != null) {
+            const action = { type: 'GET_ONE_USER', payload: this.state.searchid };
+            this.props.dispatch(action);
+            this.setState({
+                searchid: null,
+                renderPal: true,
+                notFound: false
+            });
+        }
+        else {
+            this.setState({
+                searchid: null,
+                renderPal: true,
+                notFound: true
+            });
+        }
         console.log(this.state);
     }
     render() {
         return (
             <div>
-                <h2 className="title">pal search</h2>
+                <h1 className="title">pal search</h1>
                 <div className="searchDiv">
                     <Autocomplete
+                        freeSolo
                         id="pal-search"
                         options={this.props.store.allusers}
                         getOptionLabel={(option) => option.username}
@@ -62,7 +74,10 @@ class PalSearch extends Component {
                     />
                     <button className="btn" onClick={this.handleSearch}>search</button>
                 </div>
-                {this.state.renderPal && <OnePal />}
+                {this.state.renderPal &&
+                    (this.state.notFound ?
+                        <p>"pal not found"</p> :
+                        <OnePal />)}
             </div>
         );
     }
