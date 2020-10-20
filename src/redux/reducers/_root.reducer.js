@@ -7,6 +7,7 @@ import lettersto from './lettersto.reducer';
 import lettersfrom from './lettersfrom.reducer';
 import allusers from './allusers.reducer';
 import oneuser from './oneuser.reducer';
+import pendingpals from './pendingpals.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   lettersto,
   lettersfrom,
   allusers,
-  oneuser
+  oneuser,
+  pendingpals
 });
 
 export default rootReducer;
