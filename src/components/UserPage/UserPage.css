@@ -1,4 +1,11 @@
 .userdiv{
-    width: 30%;
+    width: 60%;
+    padding: 40px;
     margin: auto;
+    border: dashed 1px #9dac68 ;
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    align-self: center;
 }

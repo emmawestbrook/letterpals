@@ -71,7 +71,7 @@ class MyLetters extends Component {
                             <div className="notpm">{letter.from_name}</div>
                             <div className="pm">{moment(letter.postmark).format("MMM Do YY")}</div>
                             <div className="notpm">{letter.recieved ? "got it" :
-                                <button className="btn"
+                                <button className="gotit"
                                     onClick={this.onClick}
                                     value={letter.letter_id}>i got it!</button>}</div>
                         </div>)}

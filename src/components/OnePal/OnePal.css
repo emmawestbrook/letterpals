@@ -1,0 +1,27 @@
+.palReturn{
+    display: flex;
+    align-content: flex-start;
+    width: 50%;
+    padding: 25px;
+    margin: 0 auto 20px;
+    background-color: peachpuff;
+    border: dashed #96483d 1px;
+    border-radius: 4px;
+}
+.palpic{
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+    margin: 30px;
+    padding: 15px;
+    border: dashed 1px #9dac68;
+}
+.palinfo{
+    flex-basis: 60%;
+    margin: 30px;
+}
+
+.profileimg {
+    border-radius: 50%;
+    margin: auto;
+  }

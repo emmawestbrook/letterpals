@@ -1,0 +1,16 @@
+.searchDiv{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    /* border: 1px dashed; */
+    margin: 30px auto auto ;
+}
+
+.title{
+    /* padding: 30px; */
+    color: #9dac68;
+    text-align: center;
+    margin: auto;
+}
+

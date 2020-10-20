@@ -26,7 +26,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log("user id in get one user", req.params.id);
-    const queryText = `SELECT "id", "username", "name", "avatar" FROM "user" WHERE "id"=$1;`;
+    const queryText = `SELECT "id", "username", "name", "avatar", "about" FROM "user" WHERE "id"=$1;`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             console.log('results.rows', result.rows)

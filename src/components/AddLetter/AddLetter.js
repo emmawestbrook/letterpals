@@ -40,13 +40,12 @@ class AddLetter extends Component {
 
     render() {
         return (
-            <div className="letterFormPanel">
-                <h2>Add letter</h2>
-                <form onSubmit={this.handleSubmit}>
+            <div >
+                <h2 className="formheader">send a new letter!</h2>
+                <form className="letterform" onSubmit={this.handleSubmit}>
                     <div className="inputs">
-                        <label className="letterInput" htmlFor="to">To:</label>
-
-                        <select name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
+                        <label htmlFor="to">To:</label>
+                        <select className="letterinput" name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
                             <option key={0} value={null}> </option>
                             {this.props.pals.map((pal) =>
                                 pal.pal1_id === this.props.store.user.id ?
@@ -55,9 +54,8 @@ class AddLetter extends Component {
                             )}
                         </select>
 
-                        <label className="letterInput" htmlFor="postmark">Sent on:</label>
-
-                        <input name="postmark" type="date"
+                        <label htmlFor="postmark">Sent on:</label>
+                        <input className="letterinput" name="postmark" type="date"
                             value={this.state.postmark}
                             required
                             placeholder="postmark date"

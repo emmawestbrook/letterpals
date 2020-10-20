@@ -1,4 +1,16 @@
-
+.gotit {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    padding: 10px 20px;
+    border-color: #e26d5c;
+    border-width: 1px 1px 3px;
+    border-radius: 4px;
+    background-color: #e29f6d; 
+    color: #f8f8f8;
+    font-size: 15px;
+    outline: 0;
+    cursor: pointer;
+}
 
 .letters{
     width: 90%;
@@ -10,8 +22,9 @@
 .letterRow{
     display: flex;
     justify-content: space-between;
-    border-bottom: solid 1px #9dac68;
-    padding: 15px;
+    border-bottom: dashed 1px #9dac68;
+    height: 60px;
+    padding-top: 20px;    
 
 }
 .pm{

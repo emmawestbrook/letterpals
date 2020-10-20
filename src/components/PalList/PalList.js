@@ -25,13 +25,9 @@ class PalList extends Component {
 
         return (
             <div>
-                <h1>{this.state.heading}</h1>
-                {/* {JSON.stringify(this.props.store.pals)} */}
                 <div className="pallist">
                     <div className="plheader">
-                        <div >image</div>
-                        <div >name</div>
-                        <div >details</div>
+                        <div >pal list</div>
                     </div>
                     <div className="plbody">
                         {this.props.store.pals.map((pal) => {
