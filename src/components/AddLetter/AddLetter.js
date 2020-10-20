@@ -24,7 +24,7 @@ class AddLetter extends Component {
     }
 
     handleSubmit = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         console.log('handlesubmit clicked');
         this.props.dispatch({
             type: 'ADD_LETTER',
@@ -45,7 +45,6 @@ class AddLetter extends Component {
                 <form className="letterform" onSubmit={this.handleSubmit}>
                     <div className="inputs">
                         <label htmlFor="to">To:</label>
-
                         <select className="letterinput" name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
                             <option key={0} value={null}> </option>
                             {this.props.pals.map((pal) =>
@@ -56,7 +55,6 @@ class AddLetter extends Component {
                         </select>
 
                         <label htmlFor="postmark">Sent on:</label>
-
                         <input className="letterinput" name="postmark" type="date"
                             value={this.state.postmark}
                             required

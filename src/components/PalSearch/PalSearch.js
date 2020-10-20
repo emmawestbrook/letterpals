@@ -40,7 +40,7 @@ class PalSearch extends Component {
     render() {
         return (
             <div>
-                <h2>pal search</h2>
+                <h2 className="title">pal search</h2>
                 <div className="searchDiv">
                     <Autocomplete
                         id="pal-search"
