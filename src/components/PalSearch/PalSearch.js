@@ -111,7 +111,7 @@ class PalSearch extends Component {
                 </div>
                 {this.state.renderPal &&
                     (this.state.notFound ?
-                        <p>"pal not found"</p> :
+                        <h2 className="title">pal not found</h2> :
                         <OnePal />)}
             </div>
         );
