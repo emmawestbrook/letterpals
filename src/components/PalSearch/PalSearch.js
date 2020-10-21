@@ -5,11 +5,42 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import OnePal from '../OnePal/OnePal';
 import './PalSearch.css';
+import { withStyles } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace
-// the component name TemplateClass with the name for the new
-// component.
+const styles = {
+    root: {
+        "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#9dac68"
+        },
+        "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#8d5f67"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#64474a"
+        },
+        "& .MuiOutlinedInput-input": {
+            color: "#9dac68"
+        },
+        "&:hover .MuiOutlinedInput-input": {
+            color: "#8d5f67"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+            color: "#64474a"
+        },
+        "& .MuiInputLabel-outlined": {
+            color: "#9dac68"
+        },
+        "&:hover .MuiInputLabel-outlined": {
+            color: "#8d5f67"
+        },
+        "& .MuiInputLabel-outlined.Mui-focused": {
+            color: "#64474a"
+        }
+    }
+};
+
+
 class PalSearch extends Component {
     state = {
         searchid: null,
@@ -48,12 +79,15 @@ class PalSearch extends Component {
         }
         console.log(this.state);
     }
+
     render() {
+        const classes = this.props.classes;
         return (
             <div>
                 <h1 className="title">pal search</h1>
                 <div className="searchDiv">
-                    <Autocomplete
+
+                    <Autocomplete className={classes.root}
                         freeSolo
                         id="pal-search"
                         options={this.props.store.allusers}
@@ -61,10 +95,9 @@ class PalSearch extends Component {
                         //value={this.props.store.allusers.id}
                         onChange={this.handleChange}
                         //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
-
                         style={{ width: 600 }}
                         renderInput={(params) => (
-                            <TextField
+                            <TextField className={classes.input}
                                 {...params}
                                 label="Search for username"
                                 margin="normal"
@@ -72,6 +105,8 @@ class PalSearch extends Component {
                                 InputProps={{ ...params.InputProps, type: 'search' }}
                             />)}
                     />
+
+
                     <button className="btn" onClick={this.handleSearch}>search</button>
                 </div>
                 {this.state.renderPal &&
@@ -83,4 +118,4 @@ class PalSearch extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(PalSearch);
+export default connect(mapStoreToProps)(withStyles(styles)(PalSearch));
