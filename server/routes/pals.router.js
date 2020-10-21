@@ -53,7 +53,7 @@ router.get('/pending', rejectUnauthenticated, (req, res) => {
     FROM "pal" AS "pal"
         JOIN "user" "pal1" ON "pal1"."id"="pal"."pal1_id"
         JOIN "user" "pal2" ON "pal2"."id"="pal"."pal2_id"
-    WHERE ("pal1_id"=$1 OR "pal2_id"=$1) AND "status"='PENDING';`;
+    WHERE "pal2_id"=$1 AND "status"='PENDING';`;
     pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows);

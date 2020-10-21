@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './OnePal.css';
 import Swal from 'sweetalert2';
+import { withRouter } from 'react-router-dom';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
-class TemplateClass extends Component {
+class OnePal extends Component {
     state = {
         addPal: false,
     };
@@ -25,8 +26,8 @@ class TemplateClass extends Component {
         // });
 
         Swal.fire({
-            title: 'add pal?',
-            text: "they will be able to see your address!",
+            title: 'send pal request?',
+            text: "if accepted, they will be able to see your address!",
             icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#9dac68',
@@ -39,8 +40,8 @@ class TemplateClass extends Component {
                     type: 'ADD_PAL',
                     payload: this.props.store.oneuser
                 });
-                Swal.fire('pal added!', 'taking you back to your pal list', 'success');
-                //this.props.history.push(`/pallist`);
+                Swal.fire('pal request sent!', 'taking you back to your pal list', 'success');
+                this.props.history.push(`/pallist`);
             }
         });
     }
@@ -52,7 +53,7 @@ class TemplateClass extends Component {
                     <img src={this.props.store.oneuser.avatar} width="200" alt="avatar" className="profileimg" />
                     <h2 className="username">@ {this.props.store.oneuser.username}</h2>
                     {this.state.addPal ?
-                        <p>pal added!</p> :
+                        <p>pal request sent!</p> :
                         <button className="btn" onClick={this.handleClick}>add pal</button>
                     }
                 </div>
@@ -65,4 +66,4 @@ class TemplateClass extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(TemplateClass);
+export default connect(mapStoreToProps)(withRouter(OnePal));
