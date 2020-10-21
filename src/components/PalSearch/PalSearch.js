@@ -58,8 +58,8 @@ class PalSearch extends Component {
                 <div className="searchDiv">
 
                     <Autocomplete
-                        getItemValue={(item) => item.id}
                         items={this.props.store.allusers}
+                        getItemValue={(item) => item.id}
                         renderItem={(item, isHighlighted) =>
                             <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
                                 {item.username}
