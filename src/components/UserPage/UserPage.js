@@ -4,11 +4,14 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './UserPage.css';
 import PendingPals from '../PendingPals/PendingPals';
+import moment from 'moment';
+import Swal from 'sweetalert2';
+
 
 class UserPage extends Component {
   componentDidMount() {
-    const action = { type: 'GET_PENDING_PALS' };
-    this.props.dispatch(action);
+    this.props.dispatch({ type: 'GET_PENDING_PALS' });
+    this.props.dispatch({ type: 'GET_LETTERS_TO' });
   };
 
   render() {
@@ -20,7 +23,8 @@ class UserPage extends Component {
         </div>
         {this.props.store.pendingpals.length > 0 ?
           <PendingPals /> :
-          <h2 className="nopals">no pending pals!</h2>}
+          <h2 className="nopals">no pending pal requests!</h2>}
+
       </>
     );
   }
