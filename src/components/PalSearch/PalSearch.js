@@ -1,17 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import Autocomplete from 'react-autocomplete';
-// import Autocomplete from '@material-ui/lab/Autocomplete';
-// import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 import OnePal from '../OnePal/OnePal';
 import './PalSearch.css';
-import { colors } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 
-// Basic class component structure for React with default state
-// value setup. When making a new component be sure to replace
-// the component name TemplateClass with the name for the new
-// component.
+const styles = {
+    root: {
+        "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#9dac68"
+        },
+        "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#8d5f67"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "#64474a"
+        },
+        "& .MuiOutlinedInput-input": {
+            color: "#9dac68"
+        },
+        "&:hover .MuiOutlinedInput-input": {
+            color: "#8d5f67"
+        },
+        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+            color: "#64474a"
+        },
+        "& .MuiInputLabel-outlined": {
+            color: "#9dac68"
+        },
+        "&:hover .MuiInputLabel-outlined": {
+            color: "#8d5f67"
+        },
+        "& .MuiInputLabel-outlined.Mui-focused": {
+            color: "#64474a"
+        }
+    }
+};
+
+
 class PalSearch extends Component {
     state = {
         searchid: null,
@@ -52,44 +81,29 @@ class PalSearch extends Component {
     }
 
     render() {
+        const classes = this.props.classes;
         return (
             <div>
                 <h1 className="title">pal search</h1>
                 <div className="searchDiv">
 
-                    <Autocomplete
-                        items={this.props.store.allusers}
-                        getItemValue={(item) => item.id}
-                        renderItem={(item, isHighlighted) =>
-                            <div style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
-                                {item.username}
-                            </div>
-                        }
-                        value={(item) => item.id}
-                        //onChange={(e) => value = e.target.value}
-                        onSelect={(val) => this.handleChange(val)}
-                    //onChange={(event, value) => this.handleChange(event, value)}
-                    //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
-                    // value={this.props.store.allusers.id}
-                    // onSelect={(e) => this.handleChange(e,)}
-                    //onSelect={value => value = val}
-
-
-                    // id="pal-search"
-                    // options={this.props.store.allusers}
-                    // getOptionLabel={(option) => option.username}
-                    // //value={this.props.store.allusers.id}
-                    // onChange={this.handleChange}
-                    // //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
-                    // style={{ borderColor: 'orange', width: 600 }}
-                    // renderInput={(params) => (
-                    //     <TextField
-                    //         {...params}
-                    //         label="Search for username"
-                    //         margin="normal"
-                    //         variant="outlined"
-                    //         InputProps={{ ...params.InputProps, type: 'search' }}
-                    //     />)}
+                    <Autocomplete className={classes.root}
+                        freeSolo
+                        id="pal-search"
+                        options={this.props.store.allusers}
+                        getOptionLabel={(option) => option.username}
+                        //value={this.props.store.allusers.id}
+                        onChange={this.handleChange}
+                        //onInputChange={(inputValue) => this.handleInputChange(inputValue)}
+                        style={{ width: 600 }}
+                        renderInput={(params) => (
+                            <TextField className={classes.input}
+                                {...params}
+                                label="Search for username"
+                                margin="normal"
+                                variant="outlined"
+                                InputProps={{ ...params.InputProps, type: 'search' }}
+                            />)}
                     />
 
 
@@ -104,4 +118,4 @@ class PalSearch extends Component {
     }
 }
 
-export default connect(mapStoreToProps)(PalSearch);
+export default connect(mapStoreToProps)(withStyles(styles)(PalSearch));
