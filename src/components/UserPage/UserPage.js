@@ -21,7 +21,6 @@ class UserPage extends Component {
         {this.props.store.pendingpals.length > 0 ?
           <PendingPals /> :
           <h2 className="nopals">no pending pals!</h2>}
-
       </>
     );
   }
