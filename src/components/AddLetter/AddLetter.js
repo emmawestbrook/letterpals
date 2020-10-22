@@ -18,7 +18,7 @@ class AddLetter extends Component {
     handleChange = (event, propertyName) => {
         this.setState({
             ...this.state,
-            [propertyName]: event.target.value
+            [propertyName]: event.target.value || null
         })
         console.log('state is:', this.state);
     }
@@ -32,7 +32,7 @@ class AddLetter extends Component {
         });
         this.setState({
             from_id: this.props.store.user.id,
-            to_id: '',
+            to_id: null,
             postmark: '',
             recieved: false
         });
