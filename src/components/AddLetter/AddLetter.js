@@ -32,8 +32,8 @@ class AddLetter extends Component {
         });
         this.setState({
             from_id: this.props.store.user.id,
-            to_id: null,
-            postmark: null,
+            to_id: '',
+            postmark: '',
             recieved: false
         });
     }
@@ -45,7 +45,9 @@ class AddLetter extends Component {
                 <form className="letterform" onSubmit={this.handleSubmit}>
                     <div className="inputs">
                         <label htmlFor="to">To:</label>
-                        <select className="letterinput" name="to" required onChange={(event) => this.handleChange(event, 'to_id')}>
+                        <select className="letterinput" name="to"
+                            required
+                            onChange={(event) => this.handleChange(event, 'to_id')}>
                             <option key={0} value={null}> </option>
                             {this.props.pals.map((pal) =>
                                 pal.pal1_id === this.props.store.user.id ?
