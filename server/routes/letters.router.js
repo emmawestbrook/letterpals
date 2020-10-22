@@ -16,7 +16,7 @@ router.get('/to', rejectUnauthenticated, (req, res) => {
                                 "from"."name" AS "from_name", 
                                 "to"."name" AS "to_name",
                                 "letter"."postmark" AS "postmark",
-                                "letter"."recieved" AS "recieved" 
+                                "letter"."received" AS "received" 
                                 
                         FROM "letter" AS "letter"
                         JOIN "user" "from" ON "from"."id"="letter"."from_id"
@@ -43,7 +43,7 @@ router.get('/from', rejectUnauthenticated, (req, res) => {
                                 "from"."name" AS "from_name", 
                                 "to"."name" AS "to_name",
                                 "letter"."postmark" AS "postmark",
-                                "letter"."recieved" AS "recieved" 
+                                "letter"."received" AS "received" 
                                 
                         FROM "letter" AS "letter"
                         JOIN "user" "from" ON "from"."id"="letter"."from_id"
@@ -63,9 +63,9 @@ router.get('/from', rejectUnauthenticated, (req, res) => {
 
 router.post('/', (req, res) => {
     console.log('req.body in letter router post', req.body);
-    const queryText = `INSERT INTO "letter" ("from_id", "to_id", "postmark", "recieved")
+    const queryText = `INSERT INTO "letter" ("from_id", "to_id", "postmark", "received")
     VALUES ($1, $2, $3, $4);`;
-    pool.query(queryText, [req.body.from_id, req.body.to_id, req.body.postmark, req.body.recieved])
+    pool.query(queryText, [req.body.from_id, req.body.to_id, req.body.postmark, req.body.received])
         .then((result) => {
             res.sendStatus(200);
         })
@@ -79,7 +79,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     console.log('req.params.id', req.params.id);
     const queryText = `UPDATE "letter" 
-    SET "recieved" = TRUE WHERE "id"=$1;`;
+    SET "received" = TRUE WHERE "id"=$1;`;
     pool.query(queryText, [req.params.id])
         .then((result) => {
             res.sendStatus(200);

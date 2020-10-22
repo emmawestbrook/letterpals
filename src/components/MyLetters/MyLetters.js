@@ -70,7 +70,7 @@ class MyLetters extends Component {
                         {this.props.store.lettersto.map((letter) => <div className=" letterRow" key={letter.letter_id}>
                             <div className="notpm">{letter.from_name}</div>
                             <div className="pm">{moment(letter.postmark).format("MMM Do YY")}</div>
-                            <div className="notpm">{letter.recieved ? "got it" :
+                            <div className="notpm">{letter.received ? "got it" :
                                 <button className="gotit"
                                     onClick={this.onClick}
                                     value={letter.letter_id}>i got it!</button>}</div>
@@ -81,7 +81,7 @@ class MyLetters extends Component {
                         {this.props.store.lettersfrom.map((letter) => <div className=" letterRow" key={letter.letter_id}>
                             <div className="notpm">{letter.to_name}</div>
                             <div className="pm">{moment(letter.postmark).format("MMM Do YY")}</div>
-                            <div className="notpm">{letter.recieved ? "got it" : "hasn't arrived yet"}</div>
+                            <div className="notpm">{letter.received ? "got it" : "hasn't arrived yet"}</div>
 
                         </div>)}
                     </div>

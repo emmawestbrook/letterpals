@@ -20,7 +20,7 @@ CREATE TABLE "letter"
     "from_id" INT REFERENCES "user",
     "to_id" INT REFERENCES "user",
     "postmark" DATE,
-    "recieved" BOOLEAN DEFAULT FALSE
+    "received" BOOLEAN DEFAULT FALSE
 );
 -- DROP TABLE "letter";
 
@@ -49,5 +49,26 @@ VALUES
     ('dog', '$2a$10$dcAehedQun3/XkY9yno4Lumm4ipiR7w3foLOMXPGZ..lnFZcnmgEK', 'Donna Dog', 'https://williammorristile.com/medieval/bestiary_dogs/medieval_dog_attendant.jpg', 'Twitter buff. Introvert. Beer lover. Web advocate. Professional pop culture evangelist. If God sneezed, what would you say to him?', '2725  Levy Court, Springfield, MA 01109'),
     ('owl', '$2a$10$J978BnW/xYEq73JKwqsZfu9iJ294vDyXXpNKoaIwRBeNFGWvz1pdi', 'Oliver Owl', 'https://i.imgur.com/z4Va7Rn.jpg', 'Total coffee fan. Evil tv aficionado. Introvert. Gamer. Amateur writer. Extreme pop culture evangelist. Infuriatingly humble analyst. If you want a vision of the future, imagine a boot stamping on a human face - forever.', '1816  Rogers Street, Savage, MT 59262');
 
---INSERT INTO "pal"
+INSERT INTO "pal"
+    ("pal1_id", "pal2_id", "status")
+VALUES
+    (4, 5, 'ACCEPTED'),
+    (3, 4, 'ACCEPTED'),
+    (5, 3, 'PENDING'),
+    (2, 4, 'ACCEPTED'),
+    (3, 1, 'ACCEPTED'),
+    (5, 1, 'ACCEPTED'),
+    (1, 4, 'PENDING'),
+    (2, 5, 'PENDING');
 
+INSERT INTO "letter"
+    ("from_id", "to_id", "postmark", "received")
+VALUES
+    (4, 3, '2020-10-08', TRUE),
+    (4, 2, '2020-10-06'. TRUE),
+    (3, 4, '2020-10-24', FALSE),
+    (1, 5, '2020-09-16', TRUE),
+    (4, 5, '2020-10-18', FALSE),
+    (5, 1, '2020-10-01', TRUE),
+    (5, 4, '2020-10-20', FALSE),
+    (3, 4, '2020-10-22', FALSE);

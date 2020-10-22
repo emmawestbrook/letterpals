@@ -12,7 +12,7 @@ class AddLetter extends Component {
         from_id: this.props.store.user.id,
         to_id: null,
         postmark: null,
-        recieved: false
+        received: false
     };
 
     handleChange = (event, propertyName) => {
@@ -34,7 +34,7 @@ class AddLetter extends Component {
             from_id: this.props.store.user.id,
             to_id: null,
             postmark: '',
-            recieved: false
+            received: false
         });
     }
 

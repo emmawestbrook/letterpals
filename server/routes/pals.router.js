@@ -66,7 +66,7 @@ router.get('/pending', rejectUnauthenticated, (req, res) => {
 });
 
 // get selected pal's details from the database
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in pal router. getting pal:', req.params.id);
     let palId = req.params.id
     const queryText = `SELECT "id", "username", "name", "avatar", "about", "address" FROM "user"
@@ -99,7 +99,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     console.log('req.body in pal router post', req.body.id);
     const queryText = `INSERT INTO "pal" ("pal1_id", "pal2_id")
     VALUES ($1, $2);`;
@@ -114,7 +114,7 @@ router.post('/', (req, res) => {
         });
 });
 
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
     console.log('req.body.pal_id in pal router post', req.body.pal_id);
     const queryText = `UPDATE "pal" 
     SET "status"='ACCEPTED'
